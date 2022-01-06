@@ -1,4 +1,4 @@
-#Guide
+# Guide
 
 Duhet te keni nodejs te instaluar. Stable Version
 Pasi ta klononi ne nje direktori instaloni dependecies.
