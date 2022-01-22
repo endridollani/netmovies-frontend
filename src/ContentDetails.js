@@ -1,0 +1,1 @@
+// for movie and series details
