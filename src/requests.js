@@ -21,5 +21,4 @@ const seriesRequests = {
     getSimilarSeries: '/api/v1/series/similar',
 }
 
-export default movieRequests;
-export default seriesRequests;
+export {movieRequests, seriesRequests};
