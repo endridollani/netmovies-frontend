@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import Row from './Row'
-import Header from './Header'
+import Nav from './Nav'
 import Footer from './Footer'
 import Banner from './Banner'
 import {movieRequests, seriesRequests} from './requests'
@@ -9,7 +9,7 @@ import {movieRequests, seriesRequests} from './requests'
 function App() {
   return (
     <div className='App'>
-      <Header />
+      <Nav />
       <Banner />
       <div className='MovieSection'>
         <Row title="Latest Movies" fetchUrl={movieRequests.getLatestMovies}/>
