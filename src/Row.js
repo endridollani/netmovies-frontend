@@ -20,9 +20,9 @@ function Row({title, fetchUrl}){
         <div className="row">
             <h2>{title}</h2>
             <div className="row_posters">
-                {movies.map(movie => {
+                {content.map(movie => {
                     <img
-                        key={id} 
+                        key={movie.id} 
                         className='row_poster' 
                         src={`${poster_baseURL}${movie.poster_path}`} 
                         alt={movie.name} 
