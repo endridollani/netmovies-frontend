@@ -7,6 +7,7 @@ import Banner from './Banner'
 import {movieRequests, seriesRequests} from './requests'
 
 function App() {
+  
   return (
     <div className='App'>
       <Nav />

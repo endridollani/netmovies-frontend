@@ -10,9 +10,9 @@ function Banner() {
         async function fetchData(){
             const request = await axios.get(movieRequests.getTrendingMovies);
             setContent(
-                request[Math.floor(Math.random() * request.length)]
+                request.data.results[Math.floor(Math.random() * request.data.results.length)]
             );
-            return request; 
+            return request;
         }
         fetchData();
     }, [])
@@ -42,8 +42,8 @@ function Banner() {
                 <h1 className="banner_description">
                     {truncateOverview(content.overview, 150)}
                 </h1>
-                <div className="banner--fadeBottom" />
             </div>
+            <div className="banner--fadeBottom" />
         </header>
     )
 }
