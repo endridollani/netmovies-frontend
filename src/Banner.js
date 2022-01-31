@@ -1,16 +1,24 @@
 import React , {useState, useEffect} from 'react';
 import axios from './axios'
-import { movieRequests, seriesRequests } from './requests';
+import {defaultRequests} from './requests';
 import './Banner.css'
 
 function Banner() {
     const [content, setContent] = useState([]);
+    const [playLink, setPlayLink] = useState([]);
 
     useEffect(()=>{
         async function fetchData(){
-            const request = await axios.get(movieRequests.getTrendingMovies);
+            let request = await axios.get(defaultRequests.getTrending);
+            request = request.data.results[Math.floor(Math.random() * request.data.results.length)];
+            if(request.hasOwnProperty('name')){
+                setPlayLink("https://fsapi.xyz/tv-tmdb/"+request.id+"-1-1")
+            }else{
+                setPlayLink("https://fsapi.xyz/movie-tmdb/"+request.id)
+            }
+
             setContent(
-                request.data.results[Math.floor(Math.random() * request.data.results.length)]
+                request
             );
             return request;
         }
@@ -33,10 +41,12 @@ function Banner() {
         >
             <div className="banner_contents">
                 <h1 className="banner_title">
-                    {content.title}
+                    {content.title || content.name}
                 </h1>
                 <div className="banner_buttons">
-                    <button className="banner_button">Play</button>
+                    <a href={playLink} target="_blank" rel="noopener noreferrer">
+                        <button className="banner_button">Play</button>
+                    </a>
                     <button className="banner_button">My WatchList</button>
                 </div>
                 <h1 className="banner_description">

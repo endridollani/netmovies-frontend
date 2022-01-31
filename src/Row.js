@@ -8,7 +8,7 @@ function Row({title, fetchUrl}){
     const [content, setContent] = useState([]);
 
     useEffect(()=>{
-        const fetchData = async () => {
+        const fetchData = async () =>{
             const request = await axios.get(fetchUrl);
             setContent(request.data.results);
         }
@@ -21,12 +21,13 @@ function Row({title, fetchUrl}){
             <h2>{title}</h2>
             <div className="row_posters">
                 {content.map(movie => {
-                    <img
-                        
+                    let image = <img
+                        key={movie.id}
                         className='row_poster' 
                         src={`${poster_baseURL}${movie.poster_path}`} 
-                        alt={movie.title} 
+                        alt={movie.title || movie.name} 
                     />
+                    return image;
                 })}
             </div>
         </div>

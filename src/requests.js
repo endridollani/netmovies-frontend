@@ -24,4 +24,8 @@ const seriesRequests = {
     getSimilarSeries: baseUrl+'/tv/similar?api_key='+api_key,
 }
 
-export {movieRequests, seriesRequests, baseUrl};
+const defaultRequests = {
+    getTrending: baseUrl+'/trending/all/day?api_key='+api_key
+}
+
+export {movieRequests, seriesRequests, defaultRequests, baseUrl};
