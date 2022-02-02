@@ -51,7 +51,8 @@ const Details = (fetchUrl) => {
                 <div className="movie-banner" style={{backgroundImage: `url(${backdropURL + movie.backdrop_path})`}}>
                     <div className="movie-content">
                         <div className="movie-poster">
-                            <img src={mainPosterURL + movie.poster_path} alt={movie.title} />
+                            {/* <img src={mainPosterURL + movie.poster_path} alt={movie.title} /> */}
+                            <div className="movie-poster-img" style={{backgroundImage: `url(${mainPosterURL + movie.poster_path})`}}></div>
                         </div>
                         <div className="movie-info">
                             <h1 className="title">
