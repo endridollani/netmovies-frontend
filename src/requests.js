@@ -8,9 +8,18 @@ const movieRequests = {
     getMovieHistory: baseUrl+'/movie/history?api_key='+api_key,
     getMovieWatchlist: baseUrl+'/movie/watchlist?api_key='+api_key,
     findMovies: baseUrl+'/movie/find?api_key='+api_key,
-    getMovieDetails: baseUrl+'/movie/details?api_key='+api_key,
-    getSimilarMovies: baseUrl+'/movie/similar?api_key='+api_key,
-    
+}
+
+const getMovieDetails = (movie_id) => {
+    return baseUrl+`/movie/${movie_id}?api_key=`+api_key;
+}
+
+const getSimilarMovies = (movie_id) => {
+    return baseUrl+`/movie/${movie_id}/similar?api_key=`+api_key;
+}
+
+const getMovieCast = (movie_id) => {
+    return baseUrl + `/movie/${movie_id}/credits?api_key=`+api_key;
 }
 
 const seriesRequests = {
@@ -24,8 +33,32 @@ const seriesRequests = {
     getSimilarSeries: baseUrl+'/tv/similar?api_key='+api_key,
 }
 
+const getSeriesDetails = (series_id) => {
+    return baseUrl+`/movie/${series_id}?api_key=`+api_key;
+}
+
+const getSimilarSeries = (series_id) => {
+    return baseUrl+`/movie/${series_id}?api_key=`+api_key;
+}
+
+const getSeriesCast = (series_id) => {
+    return baseUrl + `/tv/${series_id}/credits?api_key=`+api_key;
+}
+
 const defaultRequests = {
     getTrending: baseUrl+'/trending/all/day?api_key='+api_key
 }
 
-export {movieRequests, seriesRequests, defaultRequests, baseUrl};
+
+
+export {
+    movieRequests,
+    seriesRequests,
+    defaultRequests,
+    getMovieDetails,
+    getSeriesDetails,
+    getSimilarMovies,
+    getSimilarSeries,
+    getMovieCast,
+    getSeriesCast
+};

@@ -1,0 +1,17 @@
+.cast-container{
+    margin-left: 20px;
+}
+
+.casts{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+    padding: 20px;
+}
+
+.cast-img{
+    padding-top: 170px;
+    background-size: cover;
+    margin-bottom: 0.5rem;
+    margin-right: 10px;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class SeriesDetails extends Component {
+export default class SearchResults extends Component {
   render() {
     return <div></div>;
   }

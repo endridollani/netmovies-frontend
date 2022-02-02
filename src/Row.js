@@ -9,8 +9,14 @@ function Row({title, fetchUrl}){
 
     useEffect(()=>{
         const fetchData = async () =>{
+            console.log(fetchUrl)
             const request = await axios.get(fetchUrl);
-            setContent(request.data.results);
+            if(request.data){
+                setContent(request.data.results);
+            }else{
+                setContent(request.results);
+            }
+            
         }
         fetchData();
     }, [fetchUrl]);

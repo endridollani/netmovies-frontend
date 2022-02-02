@@ -11,16 +11,13 @@ function Banner() {
         async function fetchData(){
             let request = await axios.get(defaultRequests.getTrending);
             request = request.data.results[Math.floor(Math.random() * request.data.results.length)];
+            setContent(request);
+            
             if(request.hasOwnProperty('name')){
                 setPlayLink("https://fsapi.xyz/tv-tmdb/"+request.id+"-1-1")
             }else{
-                setPlayLink("https://fsapi.xyz/movie-tmdb/"+request.id)
+                setPlayLink("https://fsapi.xyz/tmdb-movie/"+request.id)
             }
-
-            setContent(
-                request
-            );
-            return request;
         }
         fetchData();
     }, [])
