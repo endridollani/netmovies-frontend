@@ -19,6 +19,7 @@
   max-height: 200px;
   margin-right: 10px;
   transition: transform 500ms;
+  border-radius: 5px;
 }
 
 .row_poster_img:hover {

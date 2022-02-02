@@ -1,87 +1,94 @@
-
-.movie-details{
-    background: #111;
-    color: white;
+.movie-details {
+  background: #111;
+  color: white;
 }
 
 .movie-banner {
-    width: 100%;
-    height:450px;
-    object-fit: contain;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 450px;
+  object-fit: contain;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
 }
 
-.movie-content{
-    display:flex;
-    flex-wrap: row wrap;
-    position: relative;
-    padding: 20px;
-    margin: auto;
-    max-width: 1000px;
-    justify-content: center;
-    align-content: space-between;
+.movie-content {
+  display: flex;
+  flex-wrap: row wrap;
+  position: relative;
+  padding: 20px 20px 0 20px;
+  margin: auto;
+  max-width: 1000px;
+  justify-content: center;
+  align-content: space-between;
+  height: 320px;
 }
 
-
-.movie-poster{
-    overflow: hidden;
-    position: relative;
-    width: 20%;
-    height: 350px;
-    margin-right: 20px;
+.movie-poster {
+  overflow: hidden;
+  position: relative;
+  width: 20%;
+  height: 350px;
+  margin-right: 20px;
 }
 
-.movie-poster-img{
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-size:contain;
-    background-repeat: no-repeat;
-    
+.movie-poster-img {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.movie-poster img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 5px;
+.movie-poster img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
-.movie-info{
-    margin-top: 30px;
-    width: 80%;
-    height: 350px;
+.movie-info {
+  margin-top: 30px;
+  width: 80%;
+  height: 350px;
 }
 
-.movie-info span{
-    margin-right: 5px;
+.movie-info span {
+  margin-right: 5px;
 }
 
 .overview {
-    padding: 10px 0 10px 0;
+  padding: 10px 0 10px 0;
 }
 
-
 .banner_button {
-    cursor: pointer;
-    color: #fff;
-    outline: none;
-    border: none;
-    font-weight: 700;
-    border-radius: 0.2vw;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin-right: 1rem;
-    padding-top: 0.5rem;
-    background-color: rgba(51, 51, 51, 0.5);
-    padding-bottom: 0.5rem;
-  }
-  
-  .banner_button:hover {
-    color: #000;
-    background-color: #e6e6e6;
-    transition: all 0.2s;
-  }
+  cursor: pointer;
+  color: #fff;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  background-color: rgba(51, 51, 51, 0.5);
+  padding-bottom: 0.5rem;
+}
+
+.banner_button:hover {
+  color: #000;
+  background-color: #e6e6e6;
+  transition: all 0.2s;
+}
+
+.moviebanner--fadeBottom {
+  height: 7rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+}

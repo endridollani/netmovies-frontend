@@ -4,7 +4,7 @@ import axios from './axios'
 import './Row.css'
 const poster_baseURL = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'
 
-function Row({title, fetchUrl}){
+function Row({type, title, fetchUrl}){
     const [content, setContent] = useState([]);
 
     useEffect(()=>{ 
@@ -27,7 +27,7 @@ function Row({title, fetchUrl}){
             <div className="row_posters">
                 {content.map(movie => {
                     let image = 
-                    <Link to={`/movie/${movie.id}`}>
+                    <Link to={`/${type}/${movie.id}`}>
                         <div className="row_poster">
                             <img
                                 key={movie.id}

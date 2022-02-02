@@ -49,7 +49,7 @@ const Details = () => {
         <>
         <Nav />
             <div className="movie-details">
-                <div className="movie-banner" style={{backgroundImage: `url(${backdropURL + movie.backdrop_path})`}}>
+                <header className="movie-banner" style={{backgroundImage: `url(${backdropURL + movie.backdrop_path})`}}>
                     <div className="movie-content">
                         <div className="movie-poster">
                             {/* <img src={mainPosterURL + movie.poster_path} alt={movie.title} /> */}
@@ -83,12 +83,13 @@ const Details = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div className="moviebanner--fadeBottom" />
+                </header>
                 <div className="cast">
                     <Cast type={"movie"} id={movie.id} title="Main Cast"/>
                 </div>
                 <div className="other-movies-container">
-                    <Row id={movie.id} title="Similar Movies" fetchUrl={similarMovieLink}/>
+                    <Row type="movie" id={movie.id} title="Similar Movies" fetchUrl={similarMovieLink}/>
                 </div>
             </div>
         </>
