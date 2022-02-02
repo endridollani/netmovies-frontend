@@ -11,7 +11,7 @@ import Nav from './Nav'
 const backdropURL = 'https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces';
 const mainPosterURL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2'
 
-const Details = (fetchUrl) => {
+const Details = () => {
     const {id} = useParams();
     const [movie, setMovie] = useState([]);
     const [playLink, setPlayLink] = useState([]);
@@ -26,10 +26,11 @@ const Details = (fetchUrl) => {
 
             url = getSimilarMovies(id);
             setSimilarMovieLink(url);
+            window.scrollTo(0,0);
         }
         getDetails();
         return movie;
-    }, []);
+    }, [id]);
 
 
     function getRuntime(runtime){
@@ -43,7 +44,7 @@ const Details = (fetchUrl) => {
         m = runtime;
         return hr + " hr " + (m > 0 ? m + " min" : "")
     }
-
+    
     return (
         <>
         <Nav />

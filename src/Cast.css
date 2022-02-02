@@ -14,4 +14,9 @@
     background-size: cover;
     margin-bottom: 0.5rem;
     margin-right: 10px;
+    clip-path: circle();
+}
+
+.cast-name{
+    text-align: center;
 }

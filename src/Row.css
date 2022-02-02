@@ -14,14 +14,13 @@
   display: none;
 }
 
-.row_poster {
+.row_poster_img {
   object-fit: contain;
-  width: 100%;
   max-height: 200px;
   margin-right: 10px;
   transition: transform 500ms;
 }
 
-.row_poster:hover {
+.row_poster_img:hover {
   transform: scale(1.1);
 }

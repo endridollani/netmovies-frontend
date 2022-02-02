@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import './Nav.css'
 import netmovies_logo from './netmovies_logo.png'
 import user_avatar from './user_avatar.png'
@@ -19,11 +20,14 @@ function Nav(){
 
     return( 
         <div className={`nav ${show && "nav_black"}`}>
-            <img 
-                className='nav_logo'
-                src={netmovies_logo}
-                alt="Netmovies Logo"  
-            />
+            <Link to={`/`}>
+                <img 
+                    className='nav_logo'
+                    src={netmovies_logo}
+                    alt="Netmovies Logo"  
+                />
+            </Link>
+            
 
             <img 
                 className='nav_avatar'

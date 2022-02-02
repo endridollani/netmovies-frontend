@@ -16,6 +16,7 @@ const Router = () => {
                 element={<SearchResults />}
             />
             <Route 
+                
                 exact path='/movie/:id'
                 element={<MovieDetails />}
             />
