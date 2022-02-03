@@ -7,6 +7,7 @@ import SeriesDetails from './SeriesDetails'
 import Watchlist from './Watchlist'
 import History from './History'
 import Home from './Home'
+import SeasonDetails from './SeasonDetails'
 
 const Router = () => {
     return (
@@ -23,6 +24,10 @@ const Router = () => {
             <Route 
                 exact path='/series/:id'
                 element={<SeriesDetails />}
+            />
+            <Route
+                exact path='/series/:id/:season'
+                element={<SeasonDetails />}
             />
             <Route 
                 exact path='/:type/watchlist/'

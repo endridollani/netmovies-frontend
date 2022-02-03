@@ -2,7 +2,7 @@ import React , {useState, useEffect} from 'react';
 import {useParams} from 'react-router'
 import axios from './axios'
 import {getMovieDetails, getSimilarMovies} from './requests';
-import './MovieDetails.css'
+import './Details.css'
 import Cast from './Cast'
 import Row from './Row'
 import Nav from './Nav'
@@ -29,7 +29,6 @@ const Details = () => {
             window.scrollTo(0,0);
         }
         getDetails();
-        return movie;
     }, [id]);
 
 
@@ -42,7 +41,7 @@ const Details = () => {
             }
         }
         m = runtime;
-        return hr + " hr " + (m > 0 ? m + " min" : "")
+        return (hr > 0 ? hr + " hr ": "") + (m > 0 ? m + " min" : "")
     }
     
     return (

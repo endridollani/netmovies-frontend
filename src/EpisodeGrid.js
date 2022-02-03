@@ -1,0 +1,37 @@
+import React from 'react'
+import './EpisodeGrid.css'
+
+function Grid({id, seasonNr, seasonData}){
+    const playLink = `https://fsapi.xyz/tv-tmdb/${id}-${seasonNr}`
+    console.log(playLink)
+    const poster_baseURL = 'https://www.themoviedb.org/t/p/w227_and_h127_bestv2'
+
+    function truncateTitle(str, n){
+        return str?.length > n ? str.substring(0, n-1) + "..." : str;
+    }
+
+    return(
+        <div className="grid">
+            {(seasonData.name ? <h2>{seasonData.name}</h2> : "")}
+            <div className="grid_posters">
+                {((seasonData.episodes).filter(e => e.still_path != null)).map(episode => {
+                    let image = 
+                        <div className="grid_poster">
+                             <a href={playLink+"-"+episode.episode_number} target="_blank" rel="noopener noreferrer">
+                                <img
+                                    key={episode.id}
+                                    className='grid_poster_img' 
+                                    src={`${poster_baseURL}${episode.still_path}`} 
+                                    alt={episode.name} 
+                                />
+                                <p>{truncateTitle(episode.name, 30)}</p>
+                             </a>
+                        </div>
+                    return image;
+                })}
+            </div>
+        </div>
+    )
+}
+
+export default Grid;

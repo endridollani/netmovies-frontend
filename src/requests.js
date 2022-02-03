@@ -1,7 +1,7 @@
-const baseUrl = "https://api.themoviedb.org/3";
+export const baseUrl = "https://api.themoviedb.org/3";
 const api_key=process.env.REACT_APP_api_key;
 
-const movieRequests = {
+export const movieRequests = {
     getLatestMovies: baseUrl+'/movie/now_playing?api_key='+api_key,
     getTrendingMovies: baseUrl+'/trending/movie/day?api_key='+api_key,
     getPopularMovies: baseUrl+'/movie/popular?api_key='+api_key,
@@ -10,19 +10,19 @@ const movieRequests = {
     findMovies: baseUrl+'/movie/find?api_key='+api_key,
 }
 
-const getMovieDetails = (movie_id) => {
+export const getMovieDetails = (movie_id) => {
     return baseUrl+`/movie/${movie_id}?api_key=`+api_key;
 }
 
-const getSimilarMovies = (movie_id) => {
+export const getSimilarMovies = (movie_id) => {
     return baseUrl+`/movie/${movie_id}/similar?api_key=`+api_key;
 }
 
-const getMovieCast = (movie_id) => {
+export const getMovieCast = (movie_id) => {
     return baseUrl + `/movie/${movie_id}/credits?api_key=`+api_key;
 }
 
-const seriesRequests = {
+export const seriesRequests = {
     getLatestSeries: baseUrl+'/tv/on_the_air?api_key='+api_key,
     getTrendingSeries: baseUrl+'/trending/tv/day?api_key='+api_key,
     getPopularSeries: baseUrl+'/tv/popular?api_key='+api_key,
@@ -33,32 +33,22 @@ const seriesRequests = {
     getSimilarSeries: baseUrl+'/tv/similar?api_key='+api_key,
 }
 
-const getSeriesDetails = (series_id) => {
-    return baseUrl+`/movie/${series_id}?api_key=`+api_key;
+export const getSeriesDetails = (series_id) => {
+    return baseUrl+`/tv/${series_id}?api_key=`+api_key;
 }
 
-const getSimilarSeries = (series_id) => {
-    return baseUrl+`/movie/${series_id}?api_key=`+api_key;
+export const getSeasonDetails = (series_id, season_nr) => {
+    return baseUrl+`/tv/${series_id}/season/${season_nr}?api_key=`+api_key;
 }
 
-const getSeriesCast = (series_id) => {
+export const getSimilarSeries = (series_id) => {
+    return baseUrl+`/tv/${series_id}/similar?api_key=`+api_key;
+}
+
+export const getSeriesCast = (series_id) => {
     return baseUrl + `/tv/${series_id}/credits?api_key=`+api_key;
 }
 
-const defaultRequests = {
+export const defaultRequests = {
     getTrending: baseUrl+'/trending/all/day?api_key='+api_key
 }
-
-
-
-export {
-    movieRequests,
-    seriesRequests,
-    defaultRequests,
-    getMovieDetails,
-    getSeriesDetails,
-    getSimilarMovies,
-    getSimilarSeries,
-    getMovieCast,
-    getSeriesCast
-};

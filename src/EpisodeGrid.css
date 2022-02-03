@@ -1,0 +1,28 @@
+.grid {
+    color: white;
+    margin-left: 20px;
+  }
+  
+  .grid_posters {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .grid_poster_img {
+    object-fit: contain;
+    max-height: 200px;
+    max-width: 400px;
+    margin-right: 10px;
+    transition: transform 500ms;
+    border-radius: 5px;
+  }
+  
+  .grid_poster_img:hover {
+    transform: scale(1.1);
+  }
+  
+  a{
+    text-decoration: none;
+    color:white;
+  }

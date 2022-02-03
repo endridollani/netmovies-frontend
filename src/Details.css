@@ -62,6 +62,10 @@
   padding: 10px 0 10px 0;
 }
 
+.banner_buttons{
+  padding-top: 10px;
+}
+
 .banner_button {
   cursor: pointer;
   color: #fff;
