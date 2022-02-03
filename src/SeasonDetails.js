@@ -40,6 +40,7 @@ const Details = () => {
                                 {seasonData.name}
                             </h1>
                             <>{(seasonData.air_date) ? <span><b>{seasonData.air_date}</b></span> : <span></span>}</>
+                            {(seasonData.overview) ? <p className="overview">{seasonData.overview}</p> : ""}
                             <div className="banner_buttons">
                                 <a href={playLink} target="_blank" rel="noopener noreferrer">
                                     <button className="banner_button">Play First Episode</button>
