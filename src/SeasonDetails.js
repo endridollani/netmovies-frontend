@@ -12,16 +12,13 @@ const mainPosterURL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2'
 
 const Details = () => {
     const {id, season} = useParams();
-
     const playLink = "https://fsapi.xyz/tv-tmdb/"+id+"-1-1";
     const [seasonData, setSeasonData] = useState([]);
     
     useEffect(()=>{ 
         const fetchData = async () =>{
             const url = getSeasonDetails(id, season);
-            console.log(url)
             const request = await axios.get(url);
-            console.log(request)
             setSeasonData(request.data);
             
         }
@@ -54,7 +51,7 @@ const Details = () => {
                     <div className="moviebanner--fadeBottom" />
                 </header>
                 <div className="episodes">
-                    {(seasonData.id) ? <EpisodeGrid id={seasonData.id} seasonNr={seasonData.season_number} seasonData={seasonData}></EpisodeGrid> : "" }
+                    {(seasonData.id) ? <EpisodeGrid id={id} seasonNr={season} seasonData={seasonData}></EpisodeGrid> : "" }
                 </div>
             </div>
         </>
