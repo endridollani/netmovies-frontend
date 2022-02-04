@@ -3,7 +3,6 @@ import './EpisodeGrid.css'
 
 function Grid({id, seasonNr, seasonData}){
     const playLink = `https://fsapi.xyz/tv-tmdb/${id}-${seasonNr}`
-    console.log(playLink)
     const poster_baseURL = 'https://www.themoviedb.org/t/p/w227_and_h127_bestv2'
 
     function truncateTitle(str, n){
@@ -24,7 +23,7 @@ function Grid({id, seasonNr, seasonData}){
                                     src={`${poster_baseURL}${episode.still_path}`} 
                                     alt={episode.name} 
                                 />
-                                <p>{truncateTitle(episode.name, 30)}</p>
+                                <b><p>S{seasonNr}E{episode.episode_number} - {truncateTitle(episode.name, 20)}</p></b>
                              </a>
                         </div>
                     return image;

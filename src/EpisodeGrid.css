@@ -17,6 +17,10 @@
     transition: transform 500ms;
     border-radius: 5px;
   }
+
+  .grid_poster {
+    padding-top:10px;
+  }
   
   .grid_poster_img:hover {
     transform: scale(1.1);

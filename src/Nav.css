@@ -29,3 +29,10 @@
   width: 30px;
   object-fit: contain;
 }
+
+#navigation-button {
+  all: unset;
+  padding: 10px 10px 0 0;
+  font-size: large;
+  cursor: pointer;
+}
