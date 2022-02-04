@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import ReactDOM from 'react-dom'
+
 import {Link} from 'react-router-dom'
 import axios from './axios'
 import './Row.css'
 import NavButtons from './NavButtons'
 
 const poster_baseURL = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'
+
 
 function Row({type, title, fetchUrl}){
     const [content, setContent] = useState([]);
@@ -23,7 +24,6 @@ function Row({type, title, fetchUrl}){
         fetchData();
     }, [fetchUrl]);
 
-
     return( 
         <div className="row">
             <div className="title-buttons">
@@ -34,12 +34,12 @@ function Row({type, title, fetchUrl}){
             </div>
             
             <div className="row_posters" id={title}>
-                {content.map(movie => {
+                {content.map((movie, i) => {
                     let image = 
-                    <Link to={`/${type}/${movie.id}`}>
+                    <Link to={`/${type}/${movie.id}`} key={movie+"-"+i}>
                         <div className="row_poster">
                             <img
-                                key={movie.id}
+                                key={i+"-"+movie.id}
                                 className='row_poster_img' 
                                 src={`${poster_baseURL}${movie.poster_path}`} 
                                 alt={movie.title || movie.name} 
@@ -50,13 +50,11 @@ function Row({type, title, fetchUrl}){
                 })}
             </div>
             {(document.getElementById(`${title}`)) ? 
-                    ReactDOM.render(
-                        <NavButtons div={title} />, document.getElementsByClassName(`${title}-buttons`)[0]
-                    )
-                    : ""
-                    }
+                <NavButtons div={title} /> : ""
+            }
         </div>
     )
 }
+
 
 export default Row;

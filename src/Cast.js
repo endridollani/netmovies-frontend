@@ -39,7 +39,7 @@ const Cast = ({type, id, title}) => {
 
                         return castItem;
                     }
-                    
+                    return null;
                 })
             }
         </div>

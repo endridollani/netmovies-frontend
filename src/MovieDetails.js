@@ -68,7 +68,7 @@ const Details = () => {
                                             (movie.genres).map((genre,i) => {
                                                 let genreItem = <><span key={i} className='genre-item'>{genre.name}</span></> 
                                                 return genreItem;
-                                            }) : <span></span>
+                                            }) : ""
                                 }
                                 </></b>
                             </div>

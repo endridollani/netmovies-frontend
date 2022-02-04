@@ -1,11 +1,21 @@
 import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import './Nav.css'
 import netmovies_logo from './netmovies_logo.png'
 import user_avatar from './user_avatar.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function Nav(){
     const [show, handleShow] = useState(false);
+    const [query, setQuery] = useState(false);
+
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const {generalSearch} = event.target.elements;
+        setQuery(generalSearch.value);
+    };
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -18,22 +28,44 @@ function Nav(){
         }
     }, [])
 
+    if(query){
+        return (
+            <Navigate 
+                to={`/search/${query}`}
+            />
+        )
+    }
+
     return( 
         <div className={`nav ${show && "nav_black"}`}>
-            <Link to={`/`}>
+            <div className="main-img">
+                <Link to={`/`}>
+                    <img 
+                        className='nav_logo'
+                        src={netmovies_logo}
+                        alt="Netmovies Logo"  
+                    />
+                </Link>
+            </div>
+            <div className="search-box">
+                <form onSubmit={handleSubmit}>
+                    <div className="wrap">
+                        <div className="search">
+                            <input type="text" className="searchTerm" placeholder="Search anything..." id="generalSearch" />
+                            <button type="submit" className="searchButton">
+                                <FontAwesomeIcon icon={faSearch} />
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div className="profile-img">
                 <img 
-                    className='nav_logo'
-                    src={netmovies_logo}
-                    alt="Netmovies Logo"  
+                    className='nav_avatar'
+                    src={user_avatar}
+                    alt="User Avatar" 
                 />
-            </Link>
-            
-
-            <img 
-                className='nav_avatar'
-                src={user_avatar}
-                alt="User Avatar" 
-            />
+            </div>
         </div>
     )
 }
