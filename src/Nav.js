@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Link, Navigate} from 'react-router-dom'
+import {Link, Navigate, useNavigate} from 'react-router-dom'
 import './Nav.css'
 import netmovies_logo from './netmovies_logo.png'
 import user_avatar from './user_avatar.png'
@@ -8,13 +8,12 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function Nav(){
     const [show, handleShow] = useState(false);
-    const [query, setQuery] = useState(false);
-
+    let navigate = useNavigate();
     
     const handleSubmit = (event) => {
         event.preventDefault();
         const {generalSearch} = event.target.elements;
-        setQuery(generalSearch.value);
+        navigate(`/search/${generalSearch.value}`)
     };
 
     useEffect(() => {
@@ -27,14 +26,6 @@ function Nav(){
             window.removeEventListener("scroll")
         }
     }, [])
-
-    if(query){
-        return (
-            <Navigate 
-                to={`/search/${query}`}
-            />
-        )
-    }
 
     return( 
         <div className={`nav ${show && "nav_black"}`}>
