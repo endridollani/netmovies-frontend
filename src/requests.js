@@ -7,7 +7,7 @@ export const movieRequests = {
     getPopularMovies: baseUrl+'/movie/popular?api_key='+api_key,
     getMovieHistory: baseUrl+'/movie/history?api_key='+api_key,
     getMovieWatchlist: baseUrl+'/movie/watchlist?api_key='+api_key,
-    findMovies: baseUrl+'/movie/find?api_key='+api_key,
+    getTopRatedMovies: baseUrl +'/movie/top_rated?api_key='+api_key,
 }
 
 export const getMovieDetails = (movie_id) => {
@@ -24,11 +24,12 @@ export const getMovieCast = (movie_id) => {
 
 export const seriesRequests = {
     getLatestSeries: baseUrl+'/tv/on_the_air?api_key='+api_key,
+    getAiringToday: baseUrl+'/tv/airing_today?api_key='+api_key,
     getTrendingSeries: baseUrl+'/trending/tv/day?api_key='+api_key,
     getPopularSeries: baseUrl+'/tv/popular?api_key='+api_key,
+    getTopRatedSeries: baseUrl +'/tv/top_rated?api_key='+api_key,
     getMovieHistory: baseUrl+'/tv/history?api_key='+api_key,
     getMovieWatchlist: baseUrl+'/tv/watchlist?api_key='+api_key,
-    findSeries: baseUrl+'/tv/find?api_key='+api_key,
     getMovieDetails: baseUrl+'/tv/details?api_key='+api_key,
     getSimilarSeries: baseUrl+'/tv/similar?api_key='+api_key,
 }
@@ -51,4 +52,8 @@ export const getSeriesCast = (series_id) => {
 
 export const defaultRequests = {
     getTrending: baseUrl+'/trending/all/day?api_key='+api_key
+}
+
+export const getSearchMovies = (keyword)=> {
+    return baseUrl + `/search/movie?api_key=${api_key}&language=en-US&query=${keyword}&page=1&include_adult=false`
 }
