@@ -29,8 +29,8 @@ const Details = () => {
         
         <>
         <Nav />
-            <div className="movie-details">
-                <header className="movie-banner" style={{backgroundImage: `url(${backdropURL + seasonData.poster_path})`}}>
+            <div className="movie-details" style={{backgroundImage: `url(${backdropURL + seasonData.poster_path})`}}>
+                <header className="movie-banner">
                     <div className="movie-content">
                         <div className="movie-poster">
                             <div className="movie-poster-img" style={{backgroundImage: `url(${mainPosterURL + seasonData.poster_path})`}}></div>
@@ -49,7 +49,6 @@ const Details = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="moviebanner--fadeBottom" />
                 </header>
                 <div className="episodes">
                     {(seasonData.id) ? <EpisodeGrid id={id} seasonNr={season} seasonData={seasonData}></EpisodeGrid> : "" }

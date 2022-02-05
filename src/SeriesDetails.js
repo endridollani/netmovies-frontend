@@ -48,8 +48,8 @@ const Details = () => {
     return (
         <>
         <Nav />
-            <div className="movie-details">
-                <header className="movie-banner" style={{backgroundImage: `url(${backdropURL + movie.backdrop_path})`}}>
+            <div className="movie-details" style={{backgroundImage: `url(${backdropURL + movie.backdrop_path})`}}>
+                <header className="movie-banner">
                     <div className="movie-content">
                         <div className="movie-poster">
                             {/* <img src={mainPosterURL + movie.poster_path} alt={movie.title} /> */}
@@ -83,7 +83,6 @@ const Details = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="moviebanner--fadeBottom" />
                 </header>
                 <div className="seasons">
                   <>
