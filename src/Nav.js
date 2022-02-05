@@ -38,24 +38,27 @@ function Nav(){
                     />
                 </Link>
             </div>
-            <div className="search-box">
-                <form onSubmit={handleSubmit}>
-                    <div className="wrap">
-                        <div className="search">
-                            <input type="text" className="searchTerm" placeholder="Search anything..." id="generalSearch" />
-                            <button type="submit" className="searchButton">
-                                <FontAwesomeIcon icon={faSearch} />
-                            </button>
+            
+            <div className="search-profile">
+                <div className="search-box">
+                    <form onSubmit={handleSubmit}>
+                        <div className="wrap">
+                            <div className="search">
+                                <input type="text" className="searchTerm" placeholder="Search anything..." id="generalSearch" />
+                                <button type="submit" className="searchButton">
+                                    <FontAwesomeIcon icon={faSearch} />
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-            <div className="profile-img">
-                <img 
-                    className='nav_avatar'
-                    src={user_avatar}
-                    alt="User Avatar" 
-                />
+                    </form>
+                </div>
+                <div className="profile-img">
+                    <img 
+                        className='nav_avatar'
+                        src={user_avatar}
+                        alt="User Avatar" 
+                    />
+                </div>
             </div>
         </div>
     )
