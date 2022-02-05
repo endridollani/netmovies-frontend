@@ -23,7 +23,7 @@ function Grid({id, seasonNr, seasonData}){
                                     src={`${poster_baseURL}${episode.still_path}`} 
                                     alt={episode.name} 
                                 />
-                                <b><p>S{seasonNr}E{episode.episode_number} - {truncateTitle(episode.name, 20)}</p></b>
+                                <b><p>{truncateTitle(`S${seasonNr}E${episode.episode_number} - ${episode.name}`, 25)}</p></b>
                              </a>
                         </div>
                     return image;
