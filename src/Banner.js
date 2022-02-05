@@ -1,10 +1,12 @@
 import React , {useState, useEffect} from 'react';
 import axios from './axios'
+import {Link} from 'react-router-dom'
 import {defaultRequests} from './requests';
 import './Banner.css'
 
 function Banner() {
     const [content, setContent] = useState([]);
+    const [type, setType] = useState([]);
     const [playLink, setPlayLink] = useState([]);
 
     useEffect(()=>{
@@ -15,8 +17,10 @@ function Banner() {
             
             if(request.hasOwnProperty('name')){
                 setPlayLink("https://fsapi.xyz/tv-tmdb/"+request.id+"-1-1")
+                setType('series');
             }else{
                 setPlayLink("https://fsapi.xyz/tmdb-movie/"+request.id)
+                setType('movie');
             }
         }
         fetchData();
@@ -38,7 +42,11 @@ function Banner() {
         >
             <div className="banner_contents">
                 <h1 className="banner_title">
-                    {content.title || content.name}
+                    {
+                        <Link to={`/${type}/${content.id}/`} style={{color: '#FFF',textDecoration: 'none'}}>
+                            {content.title || content.name}
+                        </Link>
+                    }
                 </h1>
                 <div className="banner_buttons">
                     <a href={playLink} target="_blank" rel="noopener noreferrer">
