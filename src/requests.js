@@ -1,4 +1,5 @@
 export const baseUrl = "https://api.themoviedb.org/3";
+export const backendUrl = "https://localhost:8080"
 const api_key=process.env.REACT_APP_api_key;
 
 export const movieRequests = {
@@ -56,4 +57,12 @@ export const defaultRequests = {
 
 export const getSearchMovies = (keyword)=> {
     return baseUrl + `/search/movie?api_key=${api_key}&language=en-US&query=${keyword}&page=1&include_adult=false`
+}
+
+export const getWatchlist = (userID) => {
+    return backendUrl + `/watchlist/${userID}`
+}
+
+export const getHistory = (userID) => {
+    return backendUrl + `/history/${userID}`
 }

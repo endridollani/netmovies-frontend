@@ -1,7 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Nav from './Nav'
+import Grid from './Watchlist'
 
-export default class Watchlist extends Component {
-  render() {
-    return <div></div>;
-  }
+const Watchlist = () => {
+   return(
+           <>
+           <Nav />
+           <div className="main">
+            <div className="watchlistSection">
+                <h2>Watchlist</h2>
+                <Grid type="watchlist"></Grid>
+            </div>
+           </div>
+           </>
+   )
+
 }
+
+export default Watchlist;

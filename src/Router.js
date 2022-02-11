@@ -30,11 +30,11 @@ const Router = () => {
                 element={<SeasonDetails />}
             />
             <Route 
-                exact path='/:type/watchlist/'
+                exact path='/watchlist/'
                 element={<Watchlist />}
             />
             <Route 
-                exact path='/:type/history/'
+                exact path='/history/'
                 element={<History />}
             />
             <Route 

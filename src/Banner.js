@@ -48,15 +48,15 @@ function Banner() {
                         </Link>
                     }
                 </h1>
+                <h1 className="banner_description">
+                    {truncateOverview(content.overview, 150)}
+                </h1>
                 <div className="banner_buttons">
                     <a href={playLink} target="_blank" rel="noopener noreferrer">
                         <button className="banner_button">Play</button>
                     </a>
                     <button className="banner_button">My WatchList</button>
                 </div>
-                <h1 className="banner_description">
-                    {truncateOverview(content.overview, 150)}
-                </h1>
             </div>
             <div className="banner--fadeBottom" />
         </header>
