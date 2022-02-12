@@ -8,6 +8,7 @@ import Watchlist from './Watchlist'
 import History from './History'
 import Home from './Home'
 import SeasonDetails from './SeasonDetails'
+import Login from './auth_pages/Login'
 
 const Router = () => {
     return (
@@ -40,6 +41,10 @@ const Router = () => {
             <Route 
                 exact path='/'
                 element={<Home />}
+            />
+             <Route 
+                exact path='/login/'
+                element={<Login />}
             />
             
         </Routes>
