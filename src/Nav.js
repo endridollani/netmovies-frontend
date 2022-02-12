@@ -8,6 +8,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function Nav(){
     const [show, handleShow] = useState(false);
+    const [showdropdown, handleShowdropdown] = useState(false)
     let navigate = useNavigate();
     
     const handleSubmit = (event) => {
@@ -52,14 +53,27 @@ function Nav(){
                         </div>
                     </form>
                 </div>
-                <div className="profile-img">
-                    <img 
-                        className='nav_avatar'
-                        src={user_avatar}
-                        alt="User Avatar" 
-                    />
+                <div className="profile-img" 
+                        onMouseEnter={() => { handleShowdropdown(true)}}
+                        onMouseLeave={() => { handleShowdropdown(false)}}>
+                    <div className="img">
+                        <img 
+                            className='nav_avatar'
+                            src={user_avatar}
+                            alt="User Avatar" 
+                        />
+                    </div>
+                    {showdropdown && (
+                        <div className="dropdown">
+                            <p>My Watchlist</p>
+                            <p>My History</p>
+                            <p>Sign Out</p>
+                        </div>
+                    )}
                 </div>
+                
             </div>
+            
         </div>
     )
 }
