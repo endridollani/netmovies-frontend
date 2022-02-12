@@ -65,9 +65,15 @@ function Nav(){
                     </div>
                     {showdropdown && (
                         <div className="dropdown">
-                            <p>My Watchlist</p>
-                            <p>My History</p>
-                            <p>Sign Out</p>
+                            <Link to={`/watchlist`}>
+                                <p>My Watchlist</p>
+                            </Link>
+                            <Link to={`/history`}>
+                                <p>My History</p>
+                            </Link>
+                            <Link to={`/login`}>
+                                <p>Sign Out</p>
+                            </Link>
                         </div>
                     )}
                 </div>

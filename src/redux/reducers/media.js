@@ -12,12 +12,12 @@ const media=(state=initialState,action)=>{
             return action.payload;
 
         case ADD_TO_HISTORY:
-            const error=action.payload;
-            return {...state,data};
+            const history_data=action.payload;
+            return {...state,history_data};
 
         case ADD_TO_WATCHLIST:
-            const error=action.payload;
-            return {...state,data};
+            const watchlist_data=action.payload;
+            return {...state,watchlist_data};
 
         default:
             return state;
