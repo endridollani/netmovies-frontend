@@ -35,7 +35,7 @@ function Banner() {
             style={{
                 backgroundSize: "cover",
                 backgroundImage: `url(
-                    "https://image.tmdb.org/t/p/original/${content?.backdrop_path}"
+                    "${content.backdrop_path ? `https://image.tmdb.org/t/p/original/${content.backdrop_path}` : ""}"
                 )`,
                 backgroundPosition: "center center"
             }}

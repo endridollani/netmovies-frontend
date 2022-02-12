@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Link, Navigate, useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import './Nav.css'
 import netmovies_logo from './netmovies_logo.png'
 import user_avatar from './user_avatar.png'

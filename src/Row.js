@@ -24,6 +24,7 @@ function Row({type, title, fetchUrl}){
         fetchData();
     }, [fetchUrl]);
 
+
     return( 
         <div className="row">
             <div className="title-buttons">
@@ -41,7 +42,7 @@ function Row({type, title, fetchUrl}){
                             <img
                                 key={i+"-"+movie.id}
                                 className='row_poster_img' 
-                                src={`${poster_baseURL}${movie.poster_path}`} 
+                                src={`${movie.poster_path ? `${poster_baseURL}${movie.poster_path}` : ``}`} 
                                 alt={movie.title || movie.name} 
                             />
                         </div>
@@ -49,8 +50,12 @@ function Row({type, title, fetchUrl}){
                     return image;
                 })}
             </div>
-            {(document.getElementById(`${title}`)) ? 
-                <NavButtons div={title} /> : ""
+            {
+            (document.getElementById(`${title}`)) ? 
+                <>
+                    <NavButtons div={title} />
+                </>
+                : ""
             }
         </div>
     )
