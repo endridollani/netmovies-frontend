@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Routes} from 'react-router-dom'
+import {Route, Routes, useNavigate} from 'react-router-dom'
 
 import SearchResults from './SearchResults'
 import MovieDetails from './MovieDetails'
@@ -42,11 +42,10 @@ const Router = () => {
                 exact path='/'
                 element={<Home />}
             />
-             <Route 
-                exact path='/login/'
+            <Route 
+                exact path='/login'
                 element={<Login />}
             />
-            
         </Routes>
     )
 }
