@@ -4,6 +4,7 @@ import {getSearchMovies, getSearchSeries} from './requests';
 import Grid from './Grid'
 import Nav from './Nav'
 import './Search.css'
+import ChangeTitle from './ChangePageTitle'
 
 const mainPosterURL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2'
 
@@ -13,6 +14,7 @@ const Results = () => {
    let series_url=getSearchSeries(keyword);
    return(
            <>
+           <ChangeTitle pageTitle={`"${keyword}" Search Results - Netmovies`} />
            <Nav />
            <div className="main search_results">
             <div className="movieSection">

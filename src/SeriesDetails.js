@@ -7,6 +7,7 @@ import Cast from './Cast'
 import Row from './Row'
 import SeasonRow from './SeasonRow'
 import Nav from './Nav'
+import ChangeTitle from './ChangePageTitle'
 import { connect } from "react-redux";
 import { add_to_history, add_to_watchlist, check_history, check_watchlist , remove_from_history, remove_from_watchlist} from './api/MediaService';
 
@@ -114,13 +115,13 @@ export const Details = () => {
     
     return (
         <>
+        <ChangeTitle pageTitle={`${movie.name} - Netmovies`} />
         <Nav />
-            <div className="movie-details" style={{backgroundImage: `url(${backdropURL + movie.backdrop_path})`}}>
-                <header className="movie-banner">
+        <div className="movie-details" style={{backgroundImage: `url(${(movie.backdrop_path ? `${backdropURL + movie.backdrop_path}` : "")})`}}>
+                <header className="movie-banner" >
                     <div className="movie-content">
                         <div className="movie-poster">
-                            {/* <img src={mainPosterURL + movie.poster_path} alt={movie.title} /> */}
-                            <div className="movie-poster-img" style={{backgroundImage: `url(${mainPosterURL + movie.poster_path})`}}></div>
+                            <div className="movie-poster-img" style={{backgroundImage: `url(${(movie.poster_path ? `${mainPosterURL + movie.poster_path}` : ``)})`}}></div>
                         </div>
                         <div className="movie-info">
                             <h1 className="title">
@@ -170,6 +171,6 @@ export const Details = () => {
 
 }
 
-export default connect(add_to_history, {
+export default connect(null, {add_to_history,
     add_to_watchlist, remove_from_history, remove_from_watchlist
   })(Details);

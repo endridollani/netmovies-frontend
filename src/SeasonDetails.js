@@ -5,7 +5,7 @@ import './Details.css'
 import Nav from './Nav'
 import {useParams} from 'react-router'
 import EpisodeGrid from './EpisodeGrid'
-
+import ChangeTitle from './ChangePageTitle'
 
 const backdropURL = 'https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces';
 const mainPosterURL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2'
@@ -28,6 +28,7 @@ const Details = () => {
     return (
         
         <>
+        <ChangeTitle pageTitle={`${seasonData.name} - Netmovies`} />
         <Nav />
             <div className="movie-details" style={{backgroundImage: `url(${backdropURL + seasonData.poster_path})`}}>
                 <header className="movie-banner">
