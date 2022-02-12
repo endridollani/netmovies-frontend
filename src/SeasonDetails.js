@@ -45,7 +45,7 @@ const Details = () => {
                                 <a href={playLink} target="_blank" rel="noopener noreferrer">
                                     <button className="banner_button">Play First Episode</button>
                                 </a>
-                                <button className="banner_button">Mark Season as Played</button>
+                                {/* <button className="banner_button">Mark Season as Played</button> */}
                             </div>
                         </div>
                     </div>

@@ -6,16 +6,20 @@ import './Details.css'
 import Cast from './Cast'
 import Row from './Row'
 import Nav from './Nav'
+import { connect } from "react-redux";
+import { add_to_history, add_to_watchlist, check_history, check_watchlist , remove_from_history, remove_from_watchlist} from './api/MediaService';
 
 
 const backdropURL = 'https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces';
 const mainPosterURL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2'
 
-const Details = () => {
+export const Details = () => {
     const {id} = useParams();
     const [movie, setMovie] = useState([]);
     const [playLink, setPlayLink] = useState([]);
     const [similarMovieLink, setSimilarMovieLink] = useState([])
+    const [watchlistBtn, setWatchlistBtn] = useState('Add to Watchlist');
+    const [historyBtn, setHistoryBtn] = useState('Add to History');
 
     useEffect(() => {
          async function getDetails() {
@@ -24,8 +28,22 @@ const Details = () => {
             setMovie(response.data)
             setPlayLink("https://fsapi.xyz/tmdb-movie/"+response.data.id)
 
+            //Url for similar movies
             url = getSimilarMovies(id);
             setSimilarMovieLink(url);
+
+            //Api call if movie is in history
+            const history_res = await check_history(id);
+            console.log(history_res)
+            if(history_res){
+                setHistoryBtn('Mark as Unplayed')
+            }
+            //Api call if movie is in watchlist
+            const watchlist_res = await check_watchlist(id);
+            console.log(watchlist_res)
+            if(watchlist_res){
+                setHistoryBtn('Remove from Watchlist')
+            }
             window.scrollTo(0,0);
         }
         getDetails();
@@ -42,6 +60,56 @@ const Details = () => {
         }
         m = runtime;
         return (hr > 0 ? hr + " hr ": "") + (m > 0 ? m + " min" : "")
+    }
+
+    const handleHistoryBtn = async (id) => {
+        let text = document.getElementById('add-history-btn').innerHTML;
+        switch (text) {
+            case 'Add to History':
+                try{
+                    let req = await add_to_history(id);
+                    setWatchlistBtn('Mark as Unplayed')
+                }catch(err){
+                    console.log(err);
+                }
+                break;
+            case 'Mark as Unplayed':
+                try{
+                    let req = await remove_from_history(id);
+                    setWatchlistBtn('Add to History')
+                }catch(err){
+                    console.log(err);
+                }
+                break;
+            default:
+                window.location.reload(false);
+                break;
+        }
+    }
+
+    const handleWatchlistBtn = async (id) => {
+        let text = document.getElementById('add-watchlist-btn').innerHTML;
+        switch (text) {
+            case 'Add to Watchlist':
+                try{
+                    let watchlist_req = await add_to_history(id);
+                    setWatchlistBtn('Remove from Watchlist')
+                }catch(err){
+                    console.log(err);
+                }
+                break;
+            case 'Remove from Watchlist':
+                try{
+                    let history_req = await remove_from_watchlist(id);
+                    setWatchlistBtn('Add to Watchlist')
+                }catch(err){
+                    console.log(err);
+                }
+                break;
+            default:
+                window.location.reload(false);
+                break;
+        }
     }
     
     return (
@@ -77,8 +145,8 @@ const Details = () => {
                                 <a href={playLink} target="_blank" rel="noopener noreferrer">
                                     <button className="banner_button">Play</button>
                                 </a>
-                                <button className="banner_button">Add to Watchlist</button>
-                                <button className="banner_button">Mark as Played</button>
+                                <button onClick={() => handleWatchlistBtn(movie.id)} className="banner_button" id="add-watchlist-btn">{watchlistBtn}</button>
+                                <button onClick={() => handleHistoryBtn(movie.id)} className="banner_button" id="add-history-btn">{historyBtn}</button>
                             </div>
                         </div>
                     </div>
@@ -96,4 +164,6 @@ const Details = () => {
 
 }
 
-export default Details;
+export default connect(add_to_history, {
+    add_to_watchlist, remove_from_history, remove_from_watchlist
+  })(Details);
