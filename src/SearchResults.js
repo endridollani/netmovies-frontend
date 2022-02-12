@@ -6,8 +6,6 @@ import Nav from './Nav'
 import './Search.css'
 import ChangeTitle from './ChangePageTitle'
 
-const mainPosterURL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2'
-
 const Results = () => {
    const {keyword} = useParams();
    let movies_url=getSearchMovies(keyword);

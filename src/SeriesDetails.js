@@ -68,7 +68,7 @@ export const Details = () => {
         switch (text) {
             case 'Add to History':
                 try{
-                    let req = await add_to_history(id);
+                    await add_to_history(id);
                     setWatchlistBtn('Mark as Unplayed')
                 }catch(err){
                     console.log(err);
@@ -76,7 +76,7 @@ export const Details = () => {
                 break;
             case 'Mark as Unplayed':
                 try{
-                    let req = await remove_from_history(id);
+                    await remove_from_history(id);
                     setWatchlistBtn('Add to History')
                 }catch(err){
                     console.log(err);
@@ -93,7 +93,7 @@ export const Details = () => {
         switch (text) {
             case 'Add to Watchlist':
                 try{
-                    let watchlist_req = await add_to_history(id);
+                    await add_to_history(id);
                     setWatchlistBtn('Remove from Watchlist')
                 }catch(err){
                     console.log(err);
@@ -101,7 +101,7 @@ export const Details = () => {
                 break;
             case 'Remove from Watchlist':
                 try{
-                    let history_req = await remove_from_watchlist(id);
+                    await remove_from_watchlist(id);
                     setWatchlistBtn('Add to Watchlist')
                 }catch(err){
                     console.log(err);
