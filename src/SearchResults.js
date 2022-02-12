@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams} from 'react-router'
 import {getSearchMovies, getSearchSeries} from './requests';
-import Row from './Row'
+import Grid from './Grid'
 import Nav from './Nav'
 import './Search.css'
 
@@ -16,10 +16,10 @@ const Results = () => {
            <Nav />
            <div className="main search_results">
             <div className="movieSection">
-                <Row type="movie" title="Movie Results" fetchUrl={movies_url}></Row>
+                <Grid type="movie" title="Movie Results" fetchUrl={movies_url}></Grid>
             </div>
             <div className="seriesSection">
-                <Row type="series" title="Series Results" fetchUrl={series_url}/>
+                <Grid type="series" title="Series Results" fetchUrl={series_url}/>
             </div>
            </div>
            </>

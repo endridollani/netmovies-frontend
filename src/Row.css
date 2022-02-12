@@ -27,12 +27,12 @@
   transform: scale(1.1);
 }
 
-.title-buttons{
+.title-buttons {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-#buttons{
+#buttons {
   padding-right: 20px;
 }

@@ -1,14 +1,28 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+
 import {Link} from 'react-router-dom'
+import axios from './axios'
 import './Row.css'
 import NavButtons from './NavButtons'
+
 const poster_baseURL = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'
 
-function Row({id, title, seriesData}){
-    function truncateTitle(str, n){
-        return str?.length > n ? str.substring(0, n-1) + "..." : str;
-    }
 
+function Row({type, title, fetchUrl}){
+    const [content, setContent] = useState([]);
+
+    useEffect(()=>{ 
+        const fetchData = async () =>{
+            const request = await axios.get(fetchUrl);
+            if(request.data){
+                setContent(request.data.results);
+            }else{
+                setContent(request.results);
+            }
+            
+        }
+        fetchData();
+    }, [fetchUrl]);
 
     return( 
         <div className="grid">
@@ -18,19 +32,18 @@ function Row({id, title, seriesData}){
                 </div>
                 <div className={title+"-buttons"} id="buttons"></div>
             </div>
-            <div className={title+"-buttons"} id="buttons"></div>
+            
             <div className="grid_posters" id={title}>
-                {((seriesData.seasons).filter(season => season.season_number > 0 && season.poster_path != null)).map(season => {
+                {content.map((movie, i) => {
                     let image = 
-                    <Link to={`/series/${id}/${season.season_number}`} style={{color: '#FFF',textDecoration: 'none'}}>
+                    <Link to={`/${type}/${movie.id}`} key={movie+"-"+i}>
                         <div className="grid_poster">
                             <img
-                                key={season.id}
+                                key={i+"-"+movie.id}
                                 className='grid_poster_img' 
-                                src={`${poster_baseURL}${season.poster_path}`} 
-                                alt={season.name} 
+                                src={`${poster_baseURL}${movie.poster_path}`} 
+                                alt={movie.title || movie.name} 
                             />
-                            <p style={{textAlign: 'center'}}>{truncateTitle(season.name, 15)}</p>
                         </div>
                     </Link>
                     return image;
@@ -39,5 +52,6 @@ function Row({id, title, seriesData}){
         </div>
     )
 }
+
 
 export default Row;
