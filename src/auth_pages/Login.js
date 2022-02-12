@@ -4,9 +4,10 @@ import { authenticate, authFailure, authSuccess } from '../redux/AuthActions';
 import './Login.css';
 import {userLogin} from '../api/AuthenticationService';
 import {Alert,Spinner} from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom'
 
 const LoginPage=({loading,error,...props})=>{
-
+    let navigate = useNavigate();
 
     const [values, setValues] = useState({
         userName: '',
@@ -22,15 +23,15 @@ const LoginPage=({loading,error,...props})=>{
             console.log("response",response);
             if(response.status===200){
                 props.setUser(response.data);
-                props.history.push('/dashboard');
+                navigate(`/`)
             }
             else{
-               props.loginFailure('Something Wrong!Please Try Again'); 
+               props.loginFailure('Something Wrong!Please Try Again');
             }
 
 
         }).catch((err)=>{
-
+            
             if(err && err.response){
             
             switch(err.response.status){
