@@ -62,11 +62,3 @@ export const getSearchMovies = (keyword)=> {
 export const getSearchSeries = (keyword)=> {
     return baseUrl + `/search/tv?api_key=${api_key}&language=en-US&query=${keyword}&page=1&include_adult=false`
 }
-
-export const getWatchlist = (userID) => {
-    return backendUrl + `/watchlist/${userID}`
-}
-
-export const getHistory = (userID) => {
-    return backendUrl + `/history/${userID}`
-}

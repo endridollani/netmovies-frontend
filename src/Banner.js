@@ -55,7 +55,9 @@ function Banner() {
                     <a href={playLink} target="_blank" rel="noopener noreferrer">
                         <button className="banner_button">Play</button>
                     </a>
-                    <button className="banner_button">My WatchList</button>
+                    <Link to={`/watchlist`}>
+                        <button className="banner_button">My WatchList</button>
+                    </Link>
                 </div>
             </div>
             <div className="banner--fadeBottom" />

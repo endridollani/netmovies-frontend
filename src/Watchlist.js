@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from './Nav'
-import Grid from './Watchlist'
+import Grid from './ContentGrid'
 
 const Watchlist = () => {
    return(

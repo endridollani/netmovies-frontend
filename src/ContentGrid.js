@@ -1,28 +1,29 @@
 import axios from 'axios';
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import {getMovieDetails} from './requests';
-import { getWatchlist , getHistory } from './requests';
 import './ContentGrid.css'
+import { connect } from "react-redux";
+import { retrieve_history, retrieve_watchlist } from './api/MediaService';
 
 const poster_baseURL = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'
 
-function Grid({type}){
+export function Grid({type}){
 
     const [content, setContent] = useState([]);
 
     useEffect(()=>{ 
         const fetchData = async () =>{
-            let requestURL;
+            let request;
             if (type == "history"){
-                requestURL = getHistory();
+                request = await retrieve_history();
             }else{
-                requestURL = getWatchlist();
+                request = await retrieve_watchlist();
             }
             
-            const request = await axios.get(requestURL);
-
+            console.log(request);
             let contentData = [];
-            request.map(element => {
+            request.map(element => async () => {
                 let url = getMovieDetails(element.id);
                 const el = await axios.get(url)
                 contentData.push(el.data.results || el.results);
@@ -63,4 +64,8 @@ function Grid({type}){
     )
 }
 
-export default Grid;
+
+export default connect(retrieve_history, {
+    retrieve_watchlist,
+  })(Grid);
+
