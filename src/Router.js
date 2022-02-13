@@ -15,7 +15,7 @@ const Router = () => {
     const checkStorage = key => {
         const storedData = localStorage.getItem(key);
         if (!storedData){
-          if(window.location.pathname != '/login'){
+          if(window.location.pathname !== '/login'){
             window.location = '/login'
           }
         }
@@ -57,7 +57,7 @@ const Router = () => {
             />
             <Route 
                 exact path='/'
-                element={<Home />}
+                element={`${checkStorage('USER_KEY') ? <Home /> : <Login />}`}
             />
             <Route 
                 exact path='/login'
