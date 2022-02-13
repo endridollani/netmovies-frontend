@@ -14,16 +14,25 @@ const Router = () => {
 
     const checkStorage = key => {
         const storedData = localStorage.getItem(key);
-        if (!storedData){
-          if(window.location.pathname !== '/login'){
-            window.location = '/login'
-          }
+        if(storedData){
+            return <Home />;
+        }else{
+            return <Login />;
+        }
+    }
+
+    
+    const redirect = key => {
+        if(checkStorage('USER_KEY') == <Login />){
+            if(window.location.pathname !== '/login'){
+                window.location = '/login'
+            }
         }
      }
     
      useEffect(() => {
       // when app loaded
-      checkStorage('USER_KEY')
+      redirect('USER_KEY')
      }, []);
     
 
@@ -57,7 +66,7 @@ const Router = () => {
             />
             <Route 
                 exact path='/'
-                element={`${checkStorage('USER_KEY') ? <Home /> : <Login />}`}
+                element={checkStorage()}
             />
             <Route 
                 exact path='/login'
