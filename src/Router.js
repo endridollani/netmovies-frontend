@@ -1,5 +1,5 @@
-import React from 'react'
-import {Route, Routes, useNavigate} from 'react-router-dom'
+import React, {useEffect} from 'react'
+import {Route, Routes} from 'react-router-dom'
 
 import SearchResults from './SearchResults'
 import MovieDetails from './MovieDetails'
@@ -11,6 +11,23 @@ import SeasonDetails from './SeasonDetails'
 import Login from './auth_pages/Login'
 
 const Router = () => {
+
+    const checkStorage = key => {
+        const storedData = localStorage.getItem(key);
+        if (!storedData){
+          if(window.location.pathname != '/login'){
+            window.location = '/login'
+          }
+        }
+     }
+    
+     useEffect(() => {
+      // when app loaded
+      checkStorage('USER_KEY')
+     }, []);
+    
+
+
     return (
         <Routes>
             <Route 
