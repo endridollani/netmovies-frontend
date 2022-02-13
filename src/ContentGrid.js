@@ -15,7 +15,7 @@ export function Grid({type}){
     useEffect(()=>{ 
         const fetchData = async () =>{
             let request;
-            if (type == "history"){
+            if (type === "history"){
                 request = await retrieve_history();
             }else{
                 request = await retrieve_watchlist();

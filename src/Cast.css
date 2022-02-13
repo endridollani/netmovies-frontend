@@ -1,22 +1,21 @@
-.cast-container{
-    margin-left: 20px;
+.cast-container {
+  margin-left: 20px;
 }
 
-.casts{
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 10px;
-    padding: 20px;
+.casts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
 }
 
-.cast-img{
-    padding-top: 170px;
-    background-size: cover;
-    margin-bottom: 0.5rem;
-    margin-right: 10px;
-    clip-path: circle();
+.cast-img {
+  padding-top: 170px;
+  background-size: cover;
+  margin-right: 10px;
+  clip-path: circle();
 }
 
-.cast-name{
-    text-align: center;
+.cast-name {
+  text-align: center;
+  margin: 0;
 }
