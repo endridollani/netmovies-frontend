@@ -30,7 +30,7 @@ const Cast = ({type, id, title}) => {
             <h2>{title}</h2>
             <div className="casts">
             {
-                casts.map((item, i) => {
+                casts.filter(c=> c.profile_path != null ).map((item, i) => {
                     if(i < 8){
                         let castItem = <div key={i} className="cast-item">
                         <div className="cast-img" style={{backgroundImage: `url(${castImg + item.profile_path})`}}></div>

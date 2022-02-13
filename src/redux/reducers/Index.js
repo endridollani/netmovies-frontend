@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import auth from './auth';
-import media from './media';
+import auth from './Auth';
+import media from './Media';
 
 export default combineReducers({
     auth

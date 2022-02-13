@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './Row.css'
-import NavButtons from './NavButtons'
 const poster_baseURL = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'
 
 function Row({id, title, seriesData}){

@@ -34,7 +34,7 @@ function Row({type, title, fetchUrl}){
             </div>
             
             <div className="grid_posters" id={title}>
-                {content.map((movie, i) => {
+                {content.filter(e => e.poster_path != null).map((movie, i) => {
                     let image = 
                     <Link to={`/${type}/${movie.id}`} key={movie+"-"+i}>
                         <div className="grid_poster">
