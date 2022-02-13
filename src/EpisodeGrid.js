@@ -11,19 +11,19 @@ function Grid({id, seasonNr, seasonData}){
 
     return(
         <div className="grid">
-            {(seasonData.name ? <h2>{seasonData.name}</h2> : "")}
+            {(seasonData.name ? <h4>{seasonData.name}</h4> : "")}
             <div className="grid_posters">
                 {((seasonData.episodes).filter(e => e.still_path != null)).map(episode => {
                     let image = 
                         <div className="grid_poster">
-                             <a href={playLink+"-"+episode.episode_number} target="_blank" rel="noopener noreferrer">
+                             <a href={playLink+"-"+episode.episode_number} target="_blank" rel="noopener noreferrer" className='text-reset text-decoration-none'>
                                 <img
                                     key={episode.id}
                                     className='grid_poster_img' 
                                     src={`${poster_baseURL}${episode.still_path}`} 
                                     alt={episode.name} 
                                 />
-                                <b><p>{truncateTitle(`S${seasonNr}E${episode.episode_number} - ${episode.name}`, 25)}</p></b>
+                                <b><p>{truncateTitle(`S${seasonNr}E${episode.episode_number} - ${episode.name}`, 30)}</p></b>
                              </a>
                         </div>
                     return image;

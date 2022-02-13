@@ -7,6 +7,7 @@ import ChangeTitle from '../ChangePageTitle'
 import {userLogin} from '../api/AuthenticationService';
 import {Alert,Spinner} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const LoginPage=({loading,error,...props})=>{
     let navigate = useNavigate();

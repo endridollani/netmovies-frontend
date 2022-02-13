@@ -27,7 +27,7 @@ const Cast = ({type, id, title}) => {
 
     return (
         <div className="cast-container">
-            <h2>{title}</h2>
+            <h4>{title}</h4>
             <div className="casts">
             {
                 casts.filter(c=> c.profile_path != null ).map((item, i) => {

@@ -28,7 +28,7 @@ function Row({type, title, fetchUrl}){
         <div className="grid">
             <div className="title-buttons">
                 <div className="title">
-                    <h2>{title}</h2>
+                    <h4>{title}</h4>
                 </div>
                 <div className={title+"-buttons"} id="buttons"></div>
             </div>

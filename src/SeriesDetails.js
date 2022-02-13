@@ -124,9 +124,9 @@ export const Details = () => {
                             <div className="movie-poster-img" style={{backgroundImage: `url(${(movie.poster_path ? `${mainPosterURL + movie.poster_path}` : ``)})`}}></div>
                         </div>
                         <div className="movie-info">
-                            <h1 className="title">
+                            <h3 className="title">
                                 {movie.name}
-                            </h1>
+                            </h3>
                             <>{(movie.first_air_date) ? <span><b>{movie.first_air_date.split('-')[0]}</b></span> : <span></span>}</>
                             <span>{getRuntime(movie.episode_run_time)}</span><br />
                             <span>{movie.vote_average}</span>

@@ -25,10 +25,10 @@ function Row({type, title, fetchUrl}){
     }, [fetchUrl]);
 
     return( 
-        <div className="row">
-            <div className="title-buttons">
+        <div className="row-container">
+            <div className="title-buttons px-3 pt-3 pb-0 .text-light"  style={{color: 'white'}}>
                 <div className="title">
-                    <h2>{title}</h2>
+                    <h4>{title}</h4>
                 </div>
                 <div className={title+"-buttons"} id="buttons"></div>
             </div>
