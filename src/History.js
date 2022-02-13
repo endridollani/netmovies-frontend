@@ -9,7 +9,7 @@ const History = () => {
            <>
            <ChangeTitle pageTitle={`History - Netmovies`} />
            <Nav />
-           <div className="main">
+           <div className="main grid-results">
             <div className="historySection">
                 <Grid type="history" title="History"></Grid>
             </div>

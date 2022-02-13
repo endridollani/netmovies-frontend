@@ -20,6 +20,7 @@ function Nav(){
     const removeUser = (e) => {
         e.preventDefault();
         try{
+            console.log("Removing user key")
             localStorage.removeItem("'USER_KEY")
             navigate('/login')
         }catch(err){

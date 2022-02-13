@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import axios from './axios'
 import './Row.css'
-import NavButtons from './NavButtons'
 
 const poster_baseURL = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'
 

@@ -49,7 +49,7 @@ function Banner() {
                     }
                 </h1>
                 <h1 className="banner_description">
-                    {truncateOverview(content.overview, 150)}
+                    {truncateOverview(content.overview, 200)}
                 </h1>
                 <div className="banner_buttons">
                     <a href={playLink} target="_blank" rel="noopener noreferrer">
