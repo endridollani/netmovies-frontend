@@ -14,7 +14,7 @@ const Router = () => {
 
     const checkStorage = key => {
         const storedData = localStorage.getItem(key);
-        if(storedData){
+        if(!storedData){
             return <Home />;
         }else{
             return <Login />;

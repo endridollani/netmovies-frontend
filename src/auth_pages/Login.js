@@ -2,6 +2,7 @@ import react,{useState} from 'react';
 import { connect } from 'react-redux';
 import { authenticate, authFailure, authSuccess } from '../redux/AuthActions';
 import './Login.css';
+import netmovies_logo from '../netmovies_logo-nobg.png'
 import {userLogin} from '../api/AuthenticationService';
 import {Alert,Spinner} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom'
@@ -70,12 +71,11 @@ const LoginPage=({loading,error,...props})=>{
 
     return (
         <div className="login-page">
-                   
-              
-                                            
         <section className="h-100">
         <div className="container h-100">
-       
+            <div className="app-logo">
+                <img id="app-logo-img" src={netmovies_logo} />
+            </div>
             <div className="row justify-content-md-center h-100">
                 <div className="card-wrapper">
 
