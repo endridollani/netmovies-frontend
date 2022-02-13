@@ -5,10 +5,13 @@ import Nav from './Nav'
 import Footer from './Footer'
 import Banner from './Banner'
 import {movieRequests, seriesRequests} from './requests'
+import ChangeTitle from './ChangePageTitle'
 
 function Home() {
   
   return (
+    <>
+    <ChangeTitle pageTitle={`Dashboard - Netmovies`} />
     <div className='main'>
       <Nav />
       <Banner />
@@ -27,6 +30,7 @@ function Home() {
       </div>
       <Footer />
     </div>
+    </>
   );
 }
 

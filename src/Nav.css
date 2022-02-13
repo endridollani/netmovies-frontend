@@ -22,6 +22,8 @@
   left: 20px;
   width: 80px;
   object-fit: contain;
+  -webkit-filter: drop-shadow(1px 1px 1px #111);
+  filter: drop-shadow(1px 1px 1px #111);
 }
 
 .main-img {

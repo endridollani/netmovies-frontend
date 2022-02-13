@@ -11,8 +11,13 @@ import SeasonDetails from './SeasonDetails'
 import Login from './auth_pages/Login'
 
 const Router = () => {
-
-    const checkStorage = key => {
+    
+     useEffect(() => {
+      // when app loaded
+      redirect('USER_KEY')
+     }, []);
+    
+     const checkStorage = key => {
         const storedData = localStorage.getItem(key);
         if(!storedData){
             return <Home />;
@@ -23,18 +28,13 @@ const Router = () => {
 
     
     const redirect = key => {
-        if(checkStorage('USER_KEY') == <Login />){
+        const storedData = localStorage.getItem(key);
+        if(storedData){
             if(window.location.pathname !== '/login'){
                 window.location = '/login'
             }
         }
      }
-    
-     useEffect(() => {
-      // when app loaded
-      redirect('USER_KEY')
-     }, []);
-    
 
 
     return (
