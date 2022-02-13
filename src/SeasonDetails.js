@@ -37,9 +37,9 @@ const Details = () => {
                             <div className="movie-poster-img" style={{backgroundImage: `url(${mainPosterURL + seasonData.poster_path})`}}></div>
                         </div>
                         <div className="movie-info">
-                            <h1 className="title">
+                            <h3 className="title">
                                 {seasonData.name}
-                            </h1>
+                            </h3>
                             <>{(seasonData.air_date) ? <span><b>{seasonData.air_date}</b></span> : <span></span>}</>
                             {(seasonData.overview) ? <p className="overview">{seasonData.overview}</p> : ""}
                             <div className="banner_buttons">

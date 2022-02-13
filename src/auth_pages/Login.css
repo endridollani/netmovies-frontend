@@ -1,7 +1,16 @@
+#app-logo-img {
+  width: 200px;
+  padding: 10px;
+  -webkit-filter: drop-shadow(1px 1px 1px #111);
+  filter: drop-shadow(1px 1px 1px #111);
+}
+
 .login-page {
   background-color: #111;
   font-size: 14px;
   min-height: 100vh;
+  background: url("../login-bg.jpeg") no-repeat;
+  background-size: cover;
 }
 
 .login-page .brand {
@@ -33,7 +42,7 @@
 }
 
 .card.fat {
-  background-color: #222;
+  background-color: #111;
   padding: 20px;
   border-radius: 10px;
 }

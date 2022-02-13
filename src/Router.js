@@ -11,21 +11,30 @@ import SeasonDetails from './SeasonDetails'
 import Login from './auth_pages/Login'
 
 const Router = () => {
-
-    const checkStorage = key => {
-        const storedData = localStorage.getItem(key);
-        if (!storedData){
-          if(window.location.pathname !== '/login'){
-            window.location = '/login'
-          }
-        }
-     }
     
      useEffect(() => {
       // when app loaded
-      checkStorage('USER_KEY')
+      redirect('USER_KEY')
      }, []);
     
+     const checkStorage = key => {
+        const storedData = localStorage.getItem(key);
+        if(!storedData){
+            return <Home />;
+        }else{
+            return <Login />;
+        }
+    }
+
+    
+    const redirect = key => {
+        const storedData = localStorage.getItem(key);
+        if(storedData){
+            if(window.location.pathname !== '/login'){
+                window.location = '/login'
+            }
+        }
+     }
 
 
     return (
@@ -57,7 +66,7 @@ const Router = () => {
             />
             <Route 
                 exact path='/'
-                element={`${checkStorage('USER_KEY') ? <Home /> : <Login />}`}
+                element={checkStorage()}
             />
             <Route 
                 exact path='/login'

@@ -25,19 +25,19 @@ function Row({type, title, fetchUrl}){
     }, [fetchUrl]);
 
     return( 
-        <div className="row">
-            <div className="title-buttons">
+        <div className="row-container">
+            <div className="title-buttons px-3 pt-3 pb-0 .text-light"  style={{color: 'white'}}>
                 <div className="title">
-                    <h2>{title}</h2>
+                    <h4>{title}</h4>
                 </div>
                 <div className={title+"-buttons"} id="buttons"></div>
             </div>
             
             <div className="row_posters" id={title}>
-                {content.map((movie, i) => {
+                {content.filter(c => c.poster_path != null).map((movie, i) => {
                     let image = 
                     <Link to={`/${type}/${movie.id}`} key={movie+"-"+i}>
-                        <div className="row_poster">
+                        <div className="row_poster" title={movie.title || movie.name}>
                             <img
                                 key={i+"-"+movie.id}
                                 className='row_poster_img' 

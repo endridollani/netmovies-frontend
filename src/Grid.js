@@ -25,31 +25,34 @@ function Row({type, title, fetchUrl}){
     }, [fetchUrl]);
 
     return( 
-        <div className="grid">
-            <div className="title-buttons">
-                <div className="title">
-                    <h2>{title}</h2>
+        <>
+        {(content.length > 0 ? 
+            <div className="grid">
+                <div className="title-buttons">
+                    <div className="title">
+                        <h4>{title}</h4>
+                    </div>
+                    <div className={title+"-buttons"} id="buttons"></div>
                 </div>
-                <div className={title+"-buttons"} id="buttons"></div>
-            </div>
-            
-            <div className="grid_posters" id={title}>
-                {content.filter(e => e.poster_path != null).map((movie, i) => {
-                    let image = 
-                    <Link to={`/${type}/${movie.id}`} key={movie+"-"+i}>
-                        <div className="grid_poster">
-                            <img
-                                key={i+"-"+movie.id}
-                                className='grid_poster_img' 
-                                src={`${poster_baseURL}${movie.poster_path}`} 
-                                alt={movie.title || movie.name} 
-                            />
-                        </div>
-                    </Link>
-                    return image;
-                })}
-            </div>
-        </div>
+                    
+                <div className="grid_posters" id={title}>
+                    {content.filter(e => e.poster_path != null).map((movie, i) => {
+                        let image = 
+                        <Link to={`/${type}/${movie.id}`} key={movie+"-"+i}>
+                            <div className="grid_poster">
+                                <img
+                                    key={i+"-"+movie.id}
+                                    className='grid_poster_img' 
+                                    src={`${poster_baseURL}${movie.poster_path}`} 
+                                    alt={movie.title || movie.name} 
+                                />
+                            </div>
+                        </Link>
+                        return image;
+                    })}
+                </div>
+            </div> : "")}
+        </>
     )
 }
 

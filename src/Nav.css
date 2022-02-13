@@ -6,7 +6,7 @@
   flex-direction: row;
   width: 100%;
   padding: 20px;
-  height: 30px;
+  height: 70px;
   z-index: 1;
 
   transition-timing-function: ease-in;
@@ -22,6 +22,8 @@
   left: 20px;
   width: 80px;
   object-fit: contain;
+  -webkit-filter: drop-shadow(1px 1px 1px #111);
+  filter: drop-shadow(1px 1px 1px #111);
 }
 
 .main-img {
@@ -99,11 +101,17 @@
   background-color: #111;
   position: relative;
   display: inline-block;
-  margin: 50px 40px 0px 40px;
+  margin: 50px 0px 0px 0px;
   border-radius: 10px;
   color: white;
+  padding: 10px 10px 0 10px;
 }
 
 .dropdown p {
   padding: 5px;
+}
+
+.dropdown a {
+  text-decoration: none;
+  color: white;
 }

@@ -1,10 +1,13 @@
-import react,{useState} from 'react';
+import {useState} from 'react';
 import { connect } from 'react-redux';
 import { authenticate, authFailure, authSuccess } from '../redux/AuthActions';
 import './Login.css';
+import netmovies_logo from '../netmovies_logo-nobg.png'
+import ChangeTitle from '../ChangePageTitle'
 import {userLogin} from '../api/AuthenticationService';
 import {Alert,Spinner} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const LoginPage=({loading,error,...props})=>{
     let navigate = useNavigate();
@@ -69,89 +72,77 @@ const LoginPage=({loading,error,...props})=>{
     console.log("Loading ",loading);
 
     return (
+        <>
+        <ChangeTitle pageTitle={`Log In - Netmovies`} />
         <div className="login-page">
-                   
-              
-                                            
-        <section className="h-100">
-        <div className="container h-100">
-       
-            <div className="row justify-content-md-center h-100">
-                <div className="card-wrapper">
-
-                    <div className="card fat">
-                        <div className="card-body">
-                            <h4 className="card-title">Login</h4>
-                            
-                            <form className="my-login-validation" onSubmit={handleSubmit} noValidate={false}>
-                                <div className="form-group">
-                                    <label htmlFor="email">User Name</label>
-                                    <input id="username" type="text" className="form-control" minLength={5} value={values.userName} onChange={handleChange} name="userName" required />
-                                    
+            <div className="container ">
+                <div className="app-logo">
+                    <img id="app-logo-img" src={netmovies_logo} alt="App Logo" />
+                </div>
+                <div className="row justify-content-md-left ">
+                    <div className="card-wrapper">
+                        <div className="card fat">
+                            <div className="card-body p-0">
+                                <h2 className="card-title">Log In</h2>
+                                <form className="my-login-validation" onSubmit={handleSubmit} noValidate={false}>
+                                    <div className="form-group pt-1">
+                                        <label htmlFor="email">User Name</label>
+                                        <input placeholder='User Name' id="username" type="text" className="form-control bg-light border-0" minLength={5} value={values.userName} onChange={handleChange} name="userName" required />
                                         <div className="invalid-feedback">
                                             UserId is invalid
                                         </div>
-                                    
-                                    
-                                    
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Password
-                                        <a href="forgot.html" className="float-right">
-                                            Forgot Password?
-                                        </a>
-                                    </label>
-                                    <input id="password" type="password" className="form-control" minLength={8} value={values.password} onChange={handleChange} name="password" required/>
-                                    <div className="invalid-feedback">
-                                        Password is required
                                     </div>
-                                </div>
+                                    <div className="form-group pt-1">
+                                        <label>Password
+                                            {/* <a href="forgot.html" className="float-right">
+                                                Forgot Password?
+                                            </a> */}
+                                        </label>
+                                        <input placeholder='Password' id="password" type="password" className="form-control bg-light border-0" minLength={8} value={values.password} onChange={handleChange} name="password" required/>
+                                        <div className="invalid-feedback">
+                                            Password is required
+                                        </div>
+                                    </div>
+                                    {/* <div className="form-group">
+                                        <div className="custom-control custom-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                                            <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                                        </div>
+                                    </div> */}
+                                    <div className="form-group m-0 pt-3">
+                                        <button type="submit" className="btn btn-outline-danger">
+                                            Login
+                                            {loading && (
+                                                <Spinner
+                                                as="span"
+                                                animation="border"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                            />
+                                            )}
+                                            {/* <ClipLoader
+                                            //css={override}
+                                            size={20}
+                                            color={"#123abc"}
+                                            loading={loading}
+                                            /> */}
+                                        </button>
+                                    </div>
+                                </form>
+                                { error &&
+                                <Alert style={{marginTop:'20px'}} variant="danger">
+                                        {error}
+                                    </Alert>
 
-                                <div className="form-group">
-                                    <div className="custom-control custom-checkbox">
-                                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                                     </div>
-                                </div>
-                                
-
-                                <div className="form-group m-0">
-                                    <button type="submit" className="btn btn-primary">
-                                        Login
-                                        {loading && (
-                                            <Spinner
-                                            as="span"
-                                            animation="border"
-                                            size="sm"
-                                            role="status"
-                                            aria-hidden="true"
-                                          />
-                                        )}
-                                        {/* <ClipLoader
-                                        //css={override}
-                                        size={20}
-                                        color={"#123abc"}
-                                        loading={loading}
-                                        /> */}
-                                    </button>
-                                </div>
-                            </form>
-                            { error &&
-                            <Alert style={{marginTop:'20px'}} variant="danger">
-                                    {error}
-                                </Alert>
-
-                            }
-                            
-        
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-        </div>
+        </>
     )
 
 

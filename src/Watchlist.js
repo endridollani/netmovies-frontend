@@ -1,15 +1,17 @@
 import React from 'react';
 import Nav from './Nav'
 import Grid from './ContentGrid'
+import './Search.css'
+import ChangeTitle from './ChangePageTitle'
 
 const Watchlist = () => {
    return(
            <>
+           <ChangeTitle pageTitle={`Watchlist - Netmovies`} />
            <Nav />
-           <div className="main">
+           <div className="main grid-results">
             <div className="watchlistSection">
-                <h2>Watchlist</h2>
-                <Grid type="watchlist"></Grid>
+                <Grid type="watchlist" title="Watchlist"></Grid>
             </div>
            </div>
            </>

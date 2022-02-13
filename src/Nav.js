@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import './Nav.css'
-import netmovies_logo from './netmovies_logo.png'
+import netmovies_logo from './netmovies_logo-nobg.png'
 import user_avatar from './user_avatar.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +16,16 @@ function Nav(){
         const {generalSearch} = event.target.elements;
         navigate(`/search/${generalSearch.value}`)
     };
+
+    const removeUser = (e) => {
+        e.preventDefault();
+        try{
+            localStorage.removeItem("'USER_KEY")
+            navigate('/login')
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -45,7 +55,7 @@ function Nav(){
                     <form onSubmit={handleSubmit}>
                         <div className="wrap">
                             <div className="search">
-                                <input type="text" className="searchTerm" placeholder="Search anything..." id="generalSearch" />
+                                <input type="text" className="searchTerm text-light" placeholder="Search anything..." id="generalSearch" />
                                 <button type="submit" className="searchButton">
                                     <FontAwesomeIcon icon={faSearch} />
                                 </button>
@@ -64,14 +74,14 @@ function Nav(){
                         />
                     </div>
                     {showdropdown && (
-                        <div className="dropdown">
+                        <div className="dropdown" >
                             <Link to={`/watchlist`}>
                                 <p>My Watchlist</p>
                             </Link>
                             <Link to={`/history`}>
                                 <p>My History</p>
                             </Link>
-                            <Link to={`/login`}>
+                            <Link to={`/login`} onClick={removeUser}>
                                 <p>Sign Out</p>
                             </Link>
                         </div>
