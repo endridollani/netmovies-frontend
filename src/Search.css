@@ -1,4 +1,5 @@
-.search_results {
+.search_results,
+.grid-results {
   min-height: 100vh;
   padding-top: 100px;
 }

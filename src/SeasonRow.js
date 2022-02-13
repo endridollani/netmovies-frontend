@@ -22,7 +22,7 @@ function Row({id, title, seriesData}){
                 {((seriesData.seasons).filter(season => season.season_number > 0 && season.poster_path != null)).map(season => {
                     let image = 
                     <Link to={`/series/${id}/${season.season_number}`} style={{color: '#FFF',textDecoration: 'none'}}>
-                        <div className="grid_poster">
+                        <div className="grid_poster" title={season.name}>
                             <img
                                 key={season.id}
                                 className='grid_poster_img' 

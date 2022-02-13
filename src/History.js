@@ -1,15 +1,17 @@
 import React from 'react';
 import Nav from './Nav'
 import Grid from './ContentGrid'
+import './Search.css'
+import ChangeTitle from './ChangePageTitle'
 
 const History = () => {
    return(
            <>
+           <ChangeTitle pageTitle={`History - Netmovies`} />
            <Nav />
            <div className="main">
             <div className="historySection">
-                <h2>History</h2>
-                <Grid type="history"></Grid>
+                <Grid type="history" title="History"></Grid>
             </div>
            </div>
            </>

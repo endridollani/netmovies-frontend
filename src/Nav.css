@@ -101,11 +101,17 @@
   background-color: #111;
   position: relative;
   display: inline-block;
-  margin: 50px 40px 0px 40px;
+  margin: 50px 0px 0px 0px;
   border-radius: 10px;
   color: white;
+  padding: 10px 10px 0 10px;
 }
 
 .dropdown p {
   padding: 5px;
+}
+
+.dropdown a {
+  text-decoration: none;
+  color: white;
 }
