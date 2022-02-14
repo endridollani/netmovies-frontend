@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Route, Routes} from 'react-router-dom'
 
 import SearchResults from './SearchResults'
@@ -11,7 +11,7 @@ import SeasonDetails from './SeasonDetails'
 import Login from './auth_pages/Login'
 
 const Router = () => {
-    
+
      useEffect(() => {
       // when app loaded
       redirect('USER_KEY')
@@ -19,7 +19,8 @@ const Router = () => {
     
      const checkStorage = key => {
         const storedData = localStorage.getItem(key);
-        if(!storedData){
+        console.log(storedData)
+        if(storedData){
             return <Home />;
         }else{
             return <Login />;
@@ -28,8 +29,10 @@ const Router = () => {
 
     
     const redirect = key => {
+        
         const storedData = localStorage.getItem(key);
-        if(storedData){
+        console.log(storedData)
+        if(!storedData){
             if(window.location.pathname !== '/login'){
                 window.location = '/login'
             }
@@ -66,7 +69,7 @@ const Router = () => {
             />
             <Route 
                 exact path='/'
-                element={checkStorage()}
+                element={<Home />}
             />
             <Route 
                 exact path='/login'
