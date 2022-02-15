@@ -12,9 +12,14 @@ function Row({type, title, fetchUrl}){
 
     useEffect(()=>{ 
         const fetchData = async () =>{
-            const request = await axios.get(fetchUrl);
+            let request = await axios.get(fetchUrl);
             if(request.data){
-                setContent(request.data.results);
+                request = request.data;
+                if(request.cast){
+                    setContent(request.cast)
+                }else{
+                    setContent(request.results);
+                }
             }else{
                 setContent(request.results);
             }

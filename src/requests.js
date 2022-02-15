@@ -62,3 +62,19 @@ export const getSearchMovies = (keyword)=> {
 export const getSearchSeries = (keyword)=> {
     return baseUrl + `/search/tv?api_key=${api_key}&language=en-US&query=${keyword}&page=1&include_adult=false`
 }
+
+export const getSearchPerson = (keyword)=> {
+    return baseUrl + `/search/person?api_key=${api_key}&language=en-US&query=${keyword}&page=1&include_adult=false`
+}
+
+export const getPersonDetails = (person_id)=> {
+    return baseUrl+`/person/${person_id}?api_key=`+api_key;
+}
+
+export const getPersonMovieCredits = (person_id)=> {
+    return baseUrl + `/person/${person_id}/movie_credits?api_key=`+api_key;
+}
+
+export const getPersonSeriesCredits = (person_id)=> {
+    return baseUrl + `/person/${person_id}/tv_credits?api_key=`+api_key;
+}

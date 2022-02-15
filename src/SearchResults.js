@@ -3,6 +3,7 @@ import {useParams} from 'react-router'
 import {getSearchMovies, getSearchSeries} from './requests';
 import Grid from './Grid'
 import Nav from './Nav'
+import Cast from './Cast'
 import './Search.css'
 import ChangeTitle from './ChangePageTitle'
 
@@ -20,6 +21,9 @@ const Results = () => {
             </div>
             <div className="seriesSection">
                 <Grid type="series" title="Series Results" fetchUrl={series_url}/>
+            </div>
+            <div className="personSection">
+                <Cast type={"search"} id={keyword} title="Person Results"/>
             </div>
            </div>
            </>

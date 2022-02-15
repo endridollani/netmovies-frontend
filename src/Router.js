@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {Route, Routes} from 'react-router-dom'
 
 import SearchResults from './SearchResults'
@@ -9,6 +9,7 @@ import History from './History'
 import Home from './Home'
 import SeasonDetails from './SeasonDetails'
 import Login from './auth_pages/Login'
+import PersonDetails from './Person'
 
 const Router = () => {
 
@@ -17,22 +18,11 @@ const Router = () => {
       redirect('USER_KEY')
      }, []);
     
-     const checkStorage = key => {
-        const storedData = localStorage.getItem(key);
-        console.log(storedData)
-        if(storedData){
-            return <Home />;
-        }else{
-            return <Login />;
-        }
-    }
-
-    
     const redirect = key => {
         
         const storedData = localStorage.getItem(key);
         console.log(storedData)
-        if(!storedData){
+        if(storedData){
             if(window.location.pathname !== '/login'){
                 window.location = '/login'
             }
@@ -58,6 +48,10 @@ const Router = () => {
             <Route
                 exact path='/series/:id/:season'
                 element={<SeasonDetails />}
+            />
+            <Route 
+                exact path='/person/:id'
+                element={<PersonDetails />}
             />
             <Route 
                 exact path='/watchlist/'

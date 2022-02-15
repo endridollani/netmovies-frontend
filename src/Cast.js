@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom'
 import axios from './axios'
-import {getMovieCast, getSeriesCast} from './requests';
+import {getMovieCast, getSeriesCast, getSearchPerson} from './requests';
 import './Cast.css'
 
 
@@ -14,11 +15,18 @@ const Cast = ({type, id, title}) => {
             let url;
             if (type === "movie"){
                 url = getMovieCast(id)
-            }else{
+            }else if (type === 'series'){
                 url = getSeriesCast(id)
+            }else{
+                url = getSearchPerson(id);
             }
             const response = await axios.get(url)
-            setCasts(response.data.cast)
+            console.log(response)
+            if(response.data.results){
+                setCasts(response.data.results)
+            }else{
+                setCasts(response.data.cast)
+            }
 
             return response;
         }
@@ -30,13 +38,15 @@ const Cast = ({type, id, title}) => {
             <h4>{title}</h4>
             <div className="casts">
             {
-                casts.filter(c=> c.profile_path != null ).map((item, i) => {
+                casts.filter(c=> c.profile_path != null).map((item, i) => {
                     if(i < 8){
-                        let castItem = <div key={i} className="cast-item">
-                        <div className="cast-img" style={{backgroundImage: `url(${castImg + item.profile_path})`}}></div>
-                        <p className="cast-name">{item.name}</p>
-                        </div>
-
+                        let castItem = 
+                        <Link to={`/person/${item.id}`} key={item+"-"+i}>
+                            <div key={i} className="cast-item">
+                                <div className="cast-img" style={{backgroundImage: `url(${castImg + item.profile_path})`}}></div>
+                                <p className="cast-name">{item.name}</p>
+                            </div>
+                        </Link>
                         return castItem;
                     }
                     return null;
