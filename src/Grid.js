@@ -43,7 +43,7 @@ function Row({type, title, fetchUrl}){
                     {content.filter(e => e.poster_path != null).map((movie, i) => {
                         let image = 
                         <Link to={`/${type}/${movie.id}`} key={movie+"-"+i}>
-                            <div className="grid_poster">
+                            <div className="grid_poster" title={(movie.title || movie.name) + " " + (movie.release_date ? `(${movie.release_date.split('-')[0]})` : "")}>
                                 <img
                                     key={i+"-"+movie.id}
                                     className='grid_poster_img' 

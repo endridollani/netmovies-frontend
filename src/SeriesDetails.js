@@ -131,15 +131,15 @@ export const Details = () => {
                             <span>{getRuntime(movie.episode_run_time)}</span><br />
                             <span>{movie.vote_average}</span>
                             <div className="genres">
-                                <b><>
+                                <>
                                 {
                                     (movie.genres) ?
                                             (movie.genres).map((genre,i) => {
-                                                let genreItem = <><span key={i} className='genre-item'>{genre.name}</span></> 
+                                                let genreItem = <b key={i} ><span className='genre-item'>{genre.name}</span></b>
                                                 return genreItem;
-                                            }) : <span></span>
+                                            }) : ""
                                 }
-                                </></b>
+                                </>
                             </div>
                             <p className="overview">{movie.overview}</p>
                             <div className="banner_buttons">

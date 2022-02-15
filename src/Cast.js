@@ -21,7 +21,6 @@ const Cast = ({type, id, title}) => {
                 url = getSearchPerson(id);
             }
             const response = await axios.get(url)
-            console.log(response)
             if(response.data.results){
                 setCasts(response.data.results)
             }else{

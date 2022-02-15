@@ -25,12 +25,10 @@ function Row({type, title, fetchUrl}){
     }, [fetchUrl]);
 
     return( 
-        <>
-        {(content.filter(c => c.poster_path != null).length > 0) ? 
         <div className="row-container">
         <div className="title-buttons px-3 pt-3 pb-0 .text-light"  style={{color: 'white'}}>
             <div className="title">
-                <h4>{title}</h4>
+                <h4>{content.length > 0 ? `${title}` : ""}</h4>
             </div>
             <div className={title+"-buttons"} id="buttons"></div>
         </div>
@@ -51,12 +49,10 @@ function Row({type, title, fetchUrl}){
                 return image;
             })}
         </div>
-        {(document.getElementById(`${title}`)) ? 
+        {(document.getElementById(`${title}`) && content.length > 0) ? 
             <NavButtons div={title} /> : ""
-           
         }
-    </div> : ""}
-        </>
+        </div>
     )
 }
 

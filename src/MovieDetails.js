@@ -129,17 +129,17 @@ export const Details = () => {
                             </h3>
                             <>{(movie.release_date) ? <span><b>{movie.release_date.split('-')[0]}</b></span> : <span></span>}</>
                             <span>{getRuntime(movie.runtime)}</span><br />
-                            <span>{movie.vote_average}</span>
+                            <span>{(movie.vote_average > 0 ? movie.vote_average : "")}</span>
                             <div className="genres">
-                                <b><>
+                                <>
                                 {
                                     (movie.genres) ?
                                             (movie.genres).map((genre,i) => {
-                                                let genreItem = <><span key={i} className='genre-item'>{genre.name}</span></> 
+                                                let genreItem = <b key={i} ><span className='genre-item'>{genre.name}</span></b>
                                                 return genreItem;
                                             }) : ""
                                 }
-                                </></b>
+                                </>
                             </div>
                             <p className="overview">{movie.overview}</p>
                             <div className="banner_buttons">
@@ -151,7 +151,6 @@ export const Details = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="moviebanner--fadeBottom" /> */}
                 </header>
                 <div className="cast">
                     <Cast type={"movie"} id={movie.id} title="Main Cast"/>
