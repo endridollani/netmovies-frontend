@@ -44,7 +44,7 @@ const PersonDetails = () => {
                                 {person.name}
                             </h3>
                             <>{(person.birthday) ? <span><b>{person.birthday.split('-')[0]}</b></span> : <span></span>}</>
-                            <span>{(person.gender === '1' ? "Female" : "Male")}</span><br />
+                            <span>{(person.gender === 1 ? "Female" : (person.gender === 2) ? "Male" : "")}</span><br />
                             <span>{person.known_for_department}</span>
                             <br />
                             <span>{person.place_of_birth}</span>

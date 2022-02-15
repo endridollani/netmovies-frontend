@@ -34,7 +34,9 @@ const Cast = ({type, id, title}) => {
     }, [type, id]);
 
     return (
-        <div className="cast-container">
+        <>
+        {(casts.length > 0) ? 
+            <div className="cast-container">
             <h4>{title}</h4>
             <div className="casts">
             {
@@ -53,7 +55,8 @@ const Cast = ({type, id, title}) => {
                 })
             }
         </div>
-        </div>
+        </div> : ""}
+        </>
     )
 }
 

@@ -25,35 +25,38 @@ function Row({type, title, fetchUrl}){
     }, [fetchUrl]);
 
     return( 
+        <>
+        {(content.filter(c => c.poster_path != null).length > 0) ? 
         <div className="row-container">
-            <div className="title-buttons px-3 pt-3 pb-0 .text-light"  style={{color: 'white'}}>
-                <div className="title">
-                    <h4>{title}</h4>
-                </div>
-                <div className={title+"-buttons"} id="buttons"></div>
+        <div className="title-buttons px-3 pt-3 pb-0 .text-light"  style={{color: 'white'}}>
+            <div className="title">
+                <h4>{title}</h4>
             </div>
-            
-            <div className="row_posters" id={title}>
-                {content.filter(c => c.poster_path != null).map((movie, i) => {
-                    let image = 
-                    <Link to={`/${type}/${movie.id}`} key={movie+"-"+i}>
-                        <div className="row_poster" title={movie.title || movie.name}>
-                            <img
-                                key={i+"-"+movie.id}
-                                className='row_poster_img' 
-                                src={`${(movie.poster_path) ? `${poster_baseURL}${movie.poster_path}` : ""}`} 
-                                alt={movie.title || movie.name} 
-                            />
-                        </div>
-                    </Link>
-                    return image;
-                })}
-            </div>
-            {(document.getElementById(`${title}`)) ? 
-                <NavButtons div={title} /> : ""
-               
-            }
+            <div className={title+"-buttons"} id="buttons"></div>
         </div>
+        
+        <div className="row_posters" id={title}>
+            {content.filter(c => c.poster_path != null).map((movie, i) => {
+                let image = 
+                <Link to={`/${type}/${movie.id}`} key={movie+"-"+i}>
+                    <div className="row_poster" title={movie.title || movie.name}>
+                        <img
+                            key={i+"-"+movie.id}
+                            className='row_poster_img' 
+                            src={`${(movie.poster_path) ? `${poster_baseURL}${movie.poster_path}` : ""}`} 
+                            alt={movie.title || movie.name} 
+                        />
+                    </div>
+                </Link>
+                return image;
+            })}
+        </div>
+        {(document.getElementById(`${title}`)) ? 
+            <NavButtons div={title} /> : ""
+           
+        }
+    </div> : ""}
+        </>
     )
 }
 

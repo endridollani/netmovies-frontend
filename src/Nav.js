@@ -56,7 +56,7 @@ function Nav(){
                     <form onSubmit={handleSubmit}>
                         <div className="wrap">
                             <div className="search">
-                                <input type="text" className="searchTerm text-light" placeholder="Search anything..." id="generalSearch" />
+                                <input type="text" className="searchTerm text-light" placeholder="Search Movies, Series, People..." id="generalSearch" />
                                 <button type="submit" className="searchButton">
                                     <FontAwesomeIcon icon={faSearch} />
                                 </button>
