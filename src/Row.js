@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
-
+import { fetchUserData } from './api/AuthenticationService';
+import { getMovieDetails, getSeriesDetails } from './requests';
 import {Link} from 'react-router-dom'
 import axios from './axios'
 import './Row.css'
@@ -13,16 +14,42 @@ function Row({type, title, fetchUrl}){
 
     useEffect(()=>{ 
         const fetchData = async () =>{
-            const request = await axios.get(fetchUrl);
-            if(request.data){
-                setContent(request.data.results);
+            let request;
+            if(type.includes('watchlist')){
+                request= await fetchUserData();
+                
+                if(type.includes('movie')){
+                    request = request.data.watchlistMovies;
+                }else{
+                    request = request.data.watchlistSeries;
+                }
+                
+                let contentData = [];
+                request = request.map(i => i < 25);
+                for(let i = 0; i < request.length; i++){
+                    console.log(request[i])
+                    let url;
+                    if(type === 'movie-watchlist'){
+                        url = getMovieDetails(request[i]);
+                    }else{
+                        url = getSeriesDetails(request[i])
+                    }
+                    const el = await axios.get(url)
+                    contentData.push(el.data.results || el.data);
+                }
             }else{
-                setContent(request.results);
+                request = await axios.get(fetchUrl);
+                if(request.data){
+                    setContent(request.data.results);
+                }else{
+                    setContent(request.results);
+                }
             }
+            
             
         }
         fetchData();
-    }, [fetchUrl]);
+    }, [fetchUrl, type]);
 
     return( 
         <div className="row-container">

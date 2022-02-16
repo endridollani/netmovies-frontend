@@ -8,8 +8,8 @@ import Row from './Row'
 import Nav from './Nav'
 import ChangeTitle from './ChangePageTitle'
 import { connect } from "react-redux";
-import { add_to_history, add_to_watchlist, check_history, check_watchlist , remove_from_history, remove_from_watchlist} from './api/MediaService';
-
+import { add_to_history, add_to_watchlist, remove_from_history, remove_from_watchlist} from './api/MediaService';
+import { fetchUserData } from './api/AuthenticationService';
 
 const backdropURL = 'https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces';
 const mainPosterURL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2'
@@ -33,15 +33,16 @@ export const Details = () => {
             url = getSimilarMovies(id);
             setSimilarMovieLink(url);
 
+            let userData = await fetchUserData();
+
             //Api call if movie is in history
-            const history_res = await check_history(id);
+            const history_res = userData.data.historyMovies.filter(e => e === id);
             console.log(history_res)
             if(history_res){
                 setHistoryBtn('Mark as Unplayed')
             }
             //Api call if movie is in watchlist
-            const watchlist_res = await check_watchlist(id);
-            console.log(watchlist_res)
+            const watchlist_res = userData.data.watchlistMovies.filter(e => e === id);
             if(watchlist_res){
                 setHistoryBtn('Remove from Watchlist')
             }

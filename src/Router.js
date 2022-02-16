@@ -22,7 +22,7 @@ const Router = () => {
         
         const storedData = localStorage.getItem(key);
         console.log(storedData)
-        if(storedData){
+        if(!storedData){
             if(window.location.pathname !== '/login'){
                 window.location = '/login'
             }

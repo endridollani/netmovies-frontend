@@ -1,14 +1,16 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import {getMovieDetails} from './requests';
+import {getMovieDetails, getSeriesDetails} from './requests';
+import {fetchUserData} from './api/AuthenticationService'
+
 import './ContentGrid.css'
 import { connect } from "react-redux";
 import { retrieve_history, retrieve_watchlist } from './api/MediaService';
 
 const poster_baseURL = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'
 
-export function Grid({type}){
+export function Grid({type, media, title}){
 
     const [content, setContent] = useState([]);
 
@@ -16,23 +18,40 @@ export function Grid({type}){
         const fetchData = async () =>{
             let request;
             if (type === "history"){
-                request = await retrieve_history();
+                request = await fetchUserData();
+                request = request.data.historyMovies;
             }else{
-                request = await retrieve_watchlist();
+                request = await fetchUserData();
+                if(media === 'movie'){
+                    request = request.data.watchlistMovies;
+                }else{
+                    request = request.data.watchlistSeries;
+                }
+                
+                
             }
             
             console.log(request);
             let contentData = [];
-            request.map(element => async () => {
-                let url = getMovieDetails(element.id);
+            for(let i = 0; i < request.length; i++){
+                console.log(request[i])
+                let url;
+                if(media === 'movie'){
+                    url = getMovieDetails(request[i]);
+                }else{
+                    url = getSeriesDetails(request[i])
+                }
                 const el = await axios.get(url)
-                contentData.push(el.data.results || el.results);
+                contentData.push(el.data.results || el.data);
+            }
+            request.forEach(element => async ()  => {
+                
             })
             setContent(contentData);
             
         }
         fetchData();
-    }, [type]);
+    }, [type, media]);
 
 
     function truncateTitle(str, n){
@@ -41,6 +60,7 @@ export function Grid({type}){
 
     return(
         <div className="grid">
+            <h3>{title}</h3>
             <div className="grid_posters">
                 {content.map((el, i) => {
                     let image = 

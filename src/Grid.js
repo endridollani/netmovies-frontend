@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-
 import {Link} from 'react-router-dom'
 import axios from './axios'
 import './Row.css'
@@ -12,17 +11,21 @@ function Row({type, title, fetchUrl}){
 
     useEffect(()=>{ 
         const fetchData = async () =>{
-            let request = await axios.get(fetchUrl);
-            if(request.data){
-                request = request.data;
-                if(request.cast){
-                    setContent(request.cast)
+            
+                let request = await axios.get(fetchUrl);
+                if(request.data){
+                    request = request.data;
+                    if(request.cast){
+                        setContent(request.cast)
+                    }else{
+                        setContent(request.results);
+                    }
                 }else{
                     setContent(request.results);
                 }
-            }else{
-                setContent(request.results);
-            }
+            
+
+
             
         }
         fetchData();

@@ -11,7 +11,12 @@ const Watchlist = () => {
            <Nav />
            <div className="main grid-results">
             <div className="watchlistSection">
-                <Grid type="watchlist" title="Watchlist"></Grid>
+                <div className="movieSection">
+                    <Grid type="watchlist" media="movie" title="Movies on Watchlist"></Grid>
+                </div>
+                <div className="movieSection">
+                    <Grid type="watchlist" media="series" title="Series on Watchlist"></Grid>
+                </div>
             </div>
            </div>
            </>
