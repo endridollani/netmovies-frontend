@@ -9,8 +9,8 @@ import SeasonRow from './SeasonRow'
 import Nav from './Nav'
 import ChangeTitle from './ChangePageTitle'
 import { connect } from "react-redux";
-import { add_to_history, add_to_watchlist, check_history, check_watchlist , remove_from_history, remove_from_watchlist} from './api/MediaService';
-
+import { add_to_history, add_to_watchlist, remove_from_history, remove_from_watchlist} from './api/MediaService';
+import { fetchUserData } from './api/AuthenticationService';
 
 const backdropURL = 'https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces';
 const mainPosterURL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2'
@@ -33,18 +33,19 @@ export const Details = () => {
             url = getSimilarSeries(id);
             setSimilarMovieLink(url);
 
-            //Api call if movie is in history
-            const history_res = await check_history(id);
-            console.log(history_res)
-            if(history_res){
-                setHistoryBtn('Mark as Unplayed')
-            }
-            //Api call if movie is in watchlist
-            const watchlist_res = await check_watchlist(id);
-            console.log(watchlist_res)
-            if(watchlist_res){
-                setHistoryBtn('Remove from Watchlist')
-            }
+            let userData = await fetchUserData();
+
+             //Api call if movie is in history
+             const history_res = userData.data.historySeries.filter(e => e === id);
+             console.log(history_res)
+             if(history_res){
+                 setHistoryBtn('Mark as Unplayed')
+             }
+             //Api call if movie is in watchlist
+             const watchlist_res = userData.data.watchlistSeries.filter(e => e === id);
+             if(watchlist_res){
+                 setHistoryBtn('Remove from Watchlist')
+             }
             window.scrollTo(0,0);
         }
         getDetails();

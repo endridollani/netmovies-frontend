@@ -3,14 +3,10 @@ import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {getMovieDetails, getSeriesDetails} from './requests';
 import {fetchUserData} from './api/AuthenticationService'
-
 import './ContentGrid.css'
-import { connect } from "react-redux";
-import { retrieve_history, retrieve_watchlist } from './api/MediaService';
 
 const poster_baseURL = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'
-
-export function Grid({type, media, title}){
+function Grid({type, media, title}){
 
     const [content, setContent] = useState([]);
 
@@ -84,8 +80,4 @@ export function Grid({type, media, title}){
     )
 }
 
-
-export default connect(retrieve_history, {
-    retrieve_watchlist,
-  })(Grid);
-
+export default Grid;
