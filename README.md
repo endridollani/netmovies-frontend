@@ -1,6 +1,18 @@
-# Guide
+## Menaxhimi i filmave dhe serialeve
 
-Duhet te keni nodejs te instaluar. Stable Version
-Pasi ta klononi ne nje direktori instaloni dependecies.
-Eshte nje implementim i thjeshte ne react qe thjesht shfaq te dhena nga url e API se implementuar ne Springboot
+---
 
+### Pershkrim i shkurter i projektit
+
+Ky projekt eshte nje klon i netflix dhe ka si qellim te ofroje <br>
+nje game te xhere filmash dhe serialesh per cdo person qe log-ohet <br>
+ne te.
+
+### Teknologjite e perdorura
+
+* Spring Boot + Spring Security and JWT Authentication
+* React
+* Mongo Database
+
+Gjithashtu eshte perdorur dhe moviedb per te aksesuar <br>
+informacionet e filmave dhe serialeve.
