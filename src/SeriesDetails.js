@@ -9,7 +9,7 @@ import SeasonRow from './SeasonRow'
 import Nav from './Nav'
 import ChangeTitle from './ChangePageTitle'
 import { connect } from "react-redux";
-import { add_to_history, add_to_watchlist, remove_from_history, remove_from_watchlist} from './api/MediaService';
+import { add_series_to_history, add_series_to_watchlist, remove_series_from_history, remove_series_from_watchlist} from './api/MediaService';
 import { fetchUserData } from './api/AuthenticationService';
 
 const backdropURL = 'https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces';
@@ -21,7 +21,7 @@ export const Details = () => {
     const [playLink, setPlayLink] = useState([]);
     const [similarMovieLink, setSimilarMovieLink] = useState([])
     const [watchlistBtn, setWatchlistBtn] = useState('Add to Watchlist');
-    const [historyBtn, setHistoryBtn] = useState('Add to History');
+    const [historyBtn, setHistoryBtn] = useState('Mark as Played');
 
     useEffect(() => {
          async function getDetails() {
@@ -37,14 +37,17 @@ export const Details = () => {
 
              //Api call if movie is in history
              const history_res = userData.data.historySeries.filter(e => e === id);
-             console.log(history_res)
-             if(history_res){
+             if(history_res.length > 0){
                  setHistoryBtn('Mark as Unplayed')
+             }else{
+                 setHistoryBtn('Mark as Played')
              }
              //Api call if movie is in watchlist
              const watchlist_res = userData.data.watchlistSeries.filter(e => e === id);
-             if(watchlist_res){
-                 setHistoryBtn('Remove from Watchlist')
+             if(watchlist_res.length > 0){
+                 setWatchlistBtn('Remove from Watchlist')
+             }else{
+                 setWatchlistBtn('Add to Watchlist')
              }
             window.scrollTo(0,0);
         }
@@ -67,18 +70,18 @@ export const Details = () => {
     const handleHistoryBtn = async (id) => {
         let text = document.getElementById('add-history-btn').innerHTML;
         switch (text) {
-            case 'Add to History':
+            case 'Mark as Played':
                 try{
-                    await add_to_history(id);
-                    setWatchlistBtn('Mark as Unplayed')
+                    await add_series_to_history(id);
+                    setHistoryBtn('Mark as Unplayed')
                 }catch(err){
                     console.log(err);
                 }
                 break;
             case 'Mark as Unplayed':
                 try{
-                    await remove_from_history(id);
-                    setWatchlistBtn('Add to History')
+                    await remove_series_from_history(id);
+                    setHistoryBtn('Mark as Played')
                 }catch(err){
                     console.log(err);
                 }
@@ -94,7 +97,7 @@ export const Details = () => {
         switch (text) {
             case 'Add to Watchlist':
                 try{
-                    await add_to_history(id);
+                    await add_series_to_watchlist(id);
                     setWatchlistBtn('Remove from Watchlist')
                 }catch(err){
                     console.log(err);
@@ -102,7 +105,7 @@ export const Details = () => {
                 break;
             case 'Remove from Watchlist':
                 try{
-                    await remove_from_watchlist(id);
+                    await remove_series_from_watchlist(id);
                     setWatchlistBtn('Add to Watchlist')
                 }catch(err){
                     console.log(err);
@@ -172,6 +175,6 @@ export const Details = () => {
 
 }
 
-export default connect(null, {add_to_history,
-    add_to_watchlist, remove_from_history, remove_from_watchlist
+export default connect(null, {add_series_to_history,
+    add_series_to_watchlist, remove_series_from_history, remove_series_from_watchlist
   })(Details);

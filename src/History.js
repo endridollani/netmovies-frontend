@@ -7,11 +7,16 @@ import ChangeTitle from './ChangePageTitle'
 const History = () => {
    return(
            <>
-           <ChangeTitle pageTitle={`History - Netmovies`} />
+           <ChangeTitle pageTitle={`Watchlist - Netmovies`} />
            <Nav />
            <div className="main grid-results">
-            <div className="historySection">
-                <Grid type="history" title="History"></Grid>
+            <div className="watchlistSection">
+                <div className="movieSection">
+                    <Grid type="history" media="movie" title="Movies you Watched"></Grid>
+                </div>
+                <div className="movieSection">
+                    <Grid type="history" media="series" title="Series you Watched"></Grid>
+                </div>
             </div>
            </div>
            </>

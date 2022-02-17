@@ -11,6 +11,10 @@
   scroll-behavior: smooth;
 }
 
+.row_posters{
+  overflow-x: hidden;
+}
+
 .row_posters::-webkit-scrollbar {
   display: none;
 }

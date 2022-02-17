@@ -15,7 +15,11 @@ function Grid({type, media, title}){
             let request;
             if (type === "history"){
                 request = await fetchUserData();
-                request = request.data.historyMovies;
+                if(media === 'movie'){
+                    request = request.data.historyMovies;
+                }else{
+                    request = request.data.historySeries;
+                }
             }else{
                 request = await fetchUserData();
                 if(media === 'movie'){
@@ -27,7 +31,6 @@ function Grid({type, media, title}){
                 
             }
             
-            console.log(request);
             let contentData = [];
             for(let i = 0; i < request.length; i++){
                 console.log(request[i])
@@ -56,7 +59,7 @@ function Grid({type, media, title}){
 
     return(
         <div className="grid">
-            <h3>{title}</h3>
+            <h3>{content.length > 0 ? `${title}` : ""}</h3>
             <div className="grid_posters">
                 {content.map((el, i) => {
                     let image = 

@@ -15,15 +15,17 @@ function Home() {
     <div className='main'>
       <Nav />
       <Banner />
-      <div className='MovieSection'>
+      <div className='watchlistSection'>
         <Row type="movie-watchlist" title="Movies In Your Watchlist" fetchUrl=""/>
+        <Row type="series-watchlist" title="Series In Your Watchlist" fetchUrl=""/>
+      </div>
+      <div className='MovieSection'>
         <Row type="movie" title="Latest Movies" fetchUrl={movieRequests.getLatestMovies}/>
         <Row type="movie" title="Trending Movies" fetchUrl={movieRequests.getTrendingMovies}/>
         <Row type="movie" title="Popular Movies" fetchUrl={movieRequests.getPopularMovies}/>
         <Row type="movie" title="Top Rated Movies" fetchUrl={movieRequests.getTopRatedMovies}/>
       </div>
       <div className='SeriesSection'>
-        <Row type="series-watchlist" title="Series In Your Watchlist" fetchUrl=""/>
         <Row type="series" title="Series Airing Today" fetchUrl={seriesRequests.getAiringToday}/>
         <Row type="series" title="Latest Series" fetchUrl={seriesRequests.getLatestSeries}/>
         <Row type="series" title="Trending Series" fetchUrl={seriesRequests.getTrendingSeries}/>
