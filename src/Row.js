@@ -59,7 +59,7 @@ function Row({type, title, fetchUrl}){
     return( 
         <div className="row-container">
         <div className="title-buttons px-3 pt-3 pb-0 .text-light"  style={{color: 'white'}}>
-            <div className="title" style={content.length > 0 ? {height: 'initial'} : {height: '0'}}>
+            <div className="title">
                 <h4>{content.length > 0 ? `${title}` : ""}</h4>
             </div>
             <div className={title+"-buttons"} id="buttons"></div>
